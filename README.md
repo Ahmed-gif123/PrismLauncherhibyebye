@@ -129,7 +129,24 @@ git clone https://github.com/Ahmed-gif123/PrismLauncherhibyebye.git
 cd PrismLauncherhibyebye
 ```
 
-If `./scripts/cherry_pick_remote_commit.sh` still fails with `No such file or directory`, you are not in the repo root or your checked-out branch does not contain the script yet.
+If `./scripts/cherry_pick_remote_commit.sh` still fails with `No such file or directory`, your checked-out branch does not contain the helper script yet (this can happen on `develop`), or you are still in the wrong folder.
+
+In that case, use direct Git commands (no helper script required):
+
+```bash
+git remote add source-repo https://github.com/Ahmed-gif123/PrismLauncherhibyebye.git 2>/dev/null || true
+git fetch source-repo --no-tags
+git cherry-pick e8295e93
+```
+
+If you need multiple commits, cherry-pick them one-by-one in order:
+
+```bash
+git cherry-pick HASH1
+git cherry-pick HASH2
+```
+
+If `git cherry-pick` says `bad revision`, the hash is not in fetched refs yet or does not exist in that remote.
 
 ```bash
 ./scripts/cherry_pick_remote_commit.sh https://github.com/Ahmed-gif123/PrismLauncherhibyebye.git e8295e93
@@ -151,7 +168,6 @@ Use this copy/paste-safe pattern instead:
 COMMIT_HASH=e8295e93
 ./scripts/cherry_pick_remote_commit.sh https://github.com/Ahmed-gif123/PrismLauncherhibyebye.git "$COMMIT_HASH"
 ```
-
 
 ## License [![https://github.com/PrismLauncher/PrismLauncher/blob/develop/LICENSE](https://img.shields.io/github/license/PrismLauncher/PrismLauncher?label=License&logo=gnu&color=C4282D)](LICENSE)
 
