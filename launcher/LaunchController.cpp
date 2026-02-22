@@ -216,6 +216,10 @@ void LaunchController::login()
             }
         }
 
+        if (accountToCheck == nullptr) {
+            m_session->ownMinecraft = true;
+        }
+
         m_session->ownMinecraft = true;
 
         switch (accountToCheck->accountState()) {
