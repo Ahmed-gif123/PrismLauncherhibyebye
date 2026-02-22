@@ -1,0 +1,4888 @@
+===== BEGIN README.md =====
+<p align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="/program_info/org.prismlauncher.PrismLauncher.logo-darkmode.svg">
+  <source media="(prefers-color-scheme: light)" srcset="/program_info/org.prismlauncher.PrismLauncher.logo.svg">
+  <img alt="Prism Launcher" src="/program_info/org.prismlauncher.PrismLauncher.logo.svg" width="40%">
+</picture>
+</p>
+
+<p align="center">
+  Prism Launcher is a custom launcher for Minecraft that allows you to easily manage multiple installations of Minecraft at once.<br />
+  <br />This is a <b>fork</b> of the MultiMC Launcher and is <b>not</b> endorsed by it.
+</p>
+
+## Installation
+
+<a href="https://repology.org/project/prismlauncher/versions">
+    <img src="https://repology.org/badge/vertical-allrepos/prismlauncher.svg" alt="Packaging status" align="right">
+</a>
+
+- All downloads and instructions for Prism Launcher can be found on our [Website](https://prismlauncher.org/download).
+- Last build status can be found in the [GitHub Actions](https://github.com/PrismLauncher/PrismLauncher/actions) tab (this also includes the pull requests status).
+
+### Development Builds
+
+Please understand that these builds are not intended for most users. There may be bugs, and other instabilities. You have been warned.
+
+There are development builds available through:
+
+- [GitHub Actions](https://github.com/PrismLauncher/PrismLauncher/actions) (includes builds from pull requests opened by contributors)
+- [nightly.link](https://prismlauncher.org/nightly) (this will always point only to the latest version of develop)
+
+These have debug information in the binaries, so their file sizes are relatively larger.
+
+Prebuilt Development builds are provided for **Linux**, **Windows** and **macOS**.
+
+On Linux, we also offer our own [Flatpak nightly repository](https://github.com/PrismLauncher/flatpak). Most software centers are able to install it by opening [this link](https://flatpak.prismlauncher.org/prismlauncher-nightly.flatpakref).
+
+## Community & Support
+
+Feel free to create a GitHub issue if you find a bug or want to suggest a new feature. We have multiple community spaces where other community members can help you:
+
+- **Our Discord server:**
+
+[![Prism Launcher Discord server](https://discordapp.com/api/guilds/1031648380885147709/widget.png?style=banner3)](https://prismlauncher.org/discord)
+
+- **Our Matrix space:**
+
+[![Prism Launcher Space](https://img.shields.io/matrix/prismlauncher:matrix.org?style=for-the-badge&label=Matrix%20Space&logo=matrix&color=purple)](https://prismlauncher.org/matrix)
+
+- **Our Subreddit:**
+
+[![r/PrismLauncher](https://img.shields.io/reddit/subreddit-subscribers/prismlauncher?style=for-the-badge&logo=reddit)](https://prismlauncher.org/reddit)
+
+## Translations
+
+The translation effort for Prism Launcher is hosted on [Weblate](https://hosted.weblate.org/projects/prismlauncher/launcher/) and information about translating Prism Launcher is available at <https://github.com/PrismLauncher/Translations>.
+
+## Building
+
+If you want to build Prism Launcher yourself, check the [build instructions](https://prismlauncher.org/wiki/development/build-instructions).
+
+## Sponsors & Partners
+
+We thank all the wonderful backers over at Open Collective! Support Prism Launcher by [becoming a backer](https://opencollective.com/prismlauncher).
+
+[![OpenCollective Backers](https://opencollective.com/prismlauncher/backers.svg?width=890&limit=1000)](https://opencollective.com/prismlauncher#backers)
+
+Thanks to JetBrains for providing us a few licenses for all their products, as part of their [Open Source program](https://www.jetbrains.com/opensource/).
+
+<a href="https://jb.gg/OpenSource">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://www.jetbrains.com/company/brand/img/logo_jb_dos_4.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg">
+  <img alt="JetBrains logo" src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg" width="40%">
+</picture>
+</a>
+
+Thanks to Weblate for hosting our translation efforts.
+
+<a href="https://hosted.weblate.org/engage/prismlauncher/">
+<img src="https://hosted.weblate.org/widgets/prismlauncher/-/open-graph.png" alt="Translation status" width="300" />
+</a>
+
+Thanks to Netlify for providing us their excellent web services, as part of their [Open Source program](https://www.netlify.com/open-source/).
+
+<a href="https://www.netlify.com"> <img src="https://www.netlify.com/v3/img/components/netlify-color-accent.svg" alt="Deploys by Netlify" /> </a>
+
+Thanks to the awesome people over at [MacStadium](https://www.macstadium.com/), for providing M1-Macs for development purposes!
+
+<a href="https://www.macstadium.com"><img src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png" alt="Powered by MacStadium" width="300"></a>
+
+## Forking/Redistributing/Custom builds policy
+
+You are free to fork, redistribute and provide custom builds as long as you follow the terms of the [license](LICENSE) (this is a legal responsibility), and if you made code changes rather than just packaging a custom build, please do the following as a basic courtesy:
+
+- Make it clear that your fork is not Prism Launcher and is not endorsed by or affiliated with the Prism Launcher project (<https://prismlauncher.org>).
+- Go through [CMakeLists.txt](CMakeLists.txt) and change Prism Launcher's API keys to your own or set them to empty strings (`""`) to disable them (this way the program will still compile but the functionality requiring those keys will be disabled).
+
+If you have any questions or want any clarification on the above conditions please make an issue and ask us.
+
+If you are just building Prism Launcher for your distribution, please make sure to set the `Launcher_BUILD_PLATFORM` to a slug representing your distribution. Examples are `archlinux`, `fedora` and `nixpkgs`.
+
+Note that if you build this software without removing the provided API keys in [CMakeLists.txt](CMakeLists.txt) you are accepting the following terms and conditions:
+
+- [Microsoft Identity Platform Terms of Use](https://docs.microsoft.com/en-us/legal/microsoft-identity-platform/terms-of-use)
+- [CurseForge 3rd Party API Terms and Conditions](https://support.curseforge.com/en/support/solutions/articles/9000207405-curse-forge-3rd-party-api-terms-and-conditions)
+
+If you do not agree with these terms and conditions, then remove the associated API keys from the [CMakeLists.txt](CMakeLists.txt) file by setting them to an empty string (`""`).
+
+## Cherry-picking commits from another remote
+
+If `git cherry-pick <hash>` fails with `bad revision`, the commit is usually not present in your local object database yet.
+
+Use `scripts/cherry_pick_remote_commit.sh` to fetch from a remote first and cherry-pick in one step:
+
+
+Before running the script, go to **your local clone** of this repository (do not use the example path literally):
+
+```bash
+cd /d/path/to/PrismLauncherhibyebye
+git rev-parse --show-toplevel
+ls scripts/cherry_pick_remote_commit.sh
+```
+
+If `cd` fails with `No such file or directory`, clone the repo first and then enter it:
+
+```bash
+git clone https://github.com/Ahmed-gif123/PrismLauncherhibyebye.git
+cd PrismLauncherhibyebye
+```
+
+If `./scripts/cherry_pick_remote_commit.sh` still fails with `No such file or directory`, your checked-out branch does not contain the helper script yet (this can happen on `develop`), or you are still in the wrong folder.
+
+In that case, use direct Git commands (no helper script required):
+
+```bash
+git remote add source-repo https://github.com/Ahmed-gif123/PrismLauncherhibyebye.git 2>/dev/null || true
+git fetch source-repo --no-tags
+git cherry-pick e8295e93
+```
+
+If you need multiple commits, cherry-pick them one-by-one in order:
+
+```bash
+git cherry-pick HASH1
+git cherry-pick HASH2
+```
+
+If `git cherry-pick` says `bad revision`, the hash is not in fetched refs yet or does not exist in that remote.
+
+```bash
+./scripts/cherry_pick_remote_commit.sh https://github.com/Ahmed-gif123/PrismLauncherhibyebye.git e8295e93
+```
+
+You can pass multiple commit hashes and they will be cherry-picked in order.
+
+Use plain values (for example `e8295e93`) and **do not include angle brackets** (`<` / `>`), because Git Bash treats them as shell redirection operators.
+
+If you run a command with `<commit_hash>` literally, Bash parses `<` as input redirection and throws:
+
+```text
+bash: syntax error near unexpected token `newline'
+```
+
+Use this copy/paste-safe pattern instead:
+
+```bash
+COMMIT_HASH=e8295e93
+./scripts/cherry_pick_remote_commit.sh https://github.com/Ahmed-gif123/PrismLauncherhibyebye.git "$COMMIT_HASH"
+```
+
+## License [![https://github.com/PrismLauncher/PrismLauncher/blob/develop/LICENSE](https://img.shields.io/github/license/PrismLauncher/PrismLauncher?label=License&logo=gnu&color=C4282D)](LICENSE)
+
+All launcher code is available under the GPL-3.0-only license.
+
+The logo and related assets are under the CC BY-SA 4.0 license.
+
+===== END README.md =====
+
+===== BEGIN launcher/Application.cpp =====
+// SPDX-FileCopyrightText: 2022 Sefa Eyeoglu <contact@scrumplex.net>
+//
+// SPDX-License-Identifier: GPL-3.0-only AND Apache-2.0
+
+/*
+ *  Prism Launcher - Minecraft Launcher
+ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
+ *  Copyright (C) 2022 Lenny McLennington <lenny@sneed.church>
+ *  Copyright (C) 2022 Tayou <git@tayou.org>
+ *  Copyright (C) 2023 TheKodeToad <TheKodeToad@proton.me>
+ *  Copyright (C) 2023 Rachel Powers <508861+Ryex@users.noreply.github.com>
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * This file incorporates work covered by the following copyright and
+ * permission notice:
+ *
+ *      Copyright 2013-2021 MultiMC Contributors
+ *
+ *      Licensed under the Apache License, Version 2.0 (the "License");
+ *      you may not use this file except in compliance with the License.
+ *      You may obtain a copy of the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *      Unless required by applicable law or agreed to in writing, software
+ *      distributed under the License is distributed on an "AS IS" BASIS,
+ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *      See the License for the specific language governing permissions and
+ *      limitations under the License.
+ */
+
+#include "Application.h"
+#include "BuildConfig.h"
+
+#include "DataMigrationTask.h"
+#include "java/JavaInstallList.h"
+#include "net/PasteUpload.h"
+#include "tasks/Task.h"
+#include "tools/GenericProfiler.h"
+#include "ui/InstanceWindow.h"
+#include "ui/MainWindow.h"
+#include "ui/ToolTipFilter.h"
+#include "ui/ViewLogWindow.h"
+
+#include "ui/dialogs/ProgressDialog.h"
+#include "ui/instanceview/AccessibleInstanceView.h"
+
+#include "ui/pages/BasePageProvider.h"
+#include "ui/pages/global/APIPage.h"
+#include "ui/pages/global/AccountListPage.h"
+#include "ui/pages/global/AppearancePage.h"
+#include "ui/pages/global/ExternalToolsPage.h"
+#include "ui/pages/global/JavaPage.h"
+#include "ui/pages/global/LanguagePage.h"
+#include "ui/pages/global/LauncherPage.h"
+#include "ui/pages/global/MinecraftPage.h"
+#include "ui/pages/global/ProxyPage.h"
+
+#include "ui/setupwizard/AutoJavaWizardPage.h"
+#include "ui/setupwizard/JavaWizardPage.h"
+#include "ui/setupwizard/LanguageWizardPage.h"
+#include "ui/setupwizard/LoginWizardPage.h"
+#include "ui/setupwizard/PasteWizardPage.h"
+#include "ui/setupwizard/SetupWizard.h"
+#include "ui/setupwizard/ThemeWizardPage.h"
+
+#include "ui/dialogs/CustomMessageBox.h"
+
+#include "ui/pagedialog/PageDialog.h"
+
+#include "ui/themes/ThemeManager.h"
+
+#include "ApplicationMessage.h"
+
+#include <iostream>
+#include <mutex>
+
+#include <QAccessible>
+#include <QCommandLineParser>
+#include <QDebug>
+#include <QDir>
+#include <QFileInfo>
+#include <QFileOpenEvent>
+#include <QIcon>
+#include <QLibraryInfo>
+#include <QList>
+#include <QNetworkAccessManager>
+#include <QStringList>
+#include <QStringLiteral>
+#include <QStyleFactory>
+#include <QTranslator>
+#include <QWindow>
+
+#include "InstanceList.h"
+#include "MTPixmapCache.h"
+
+#include <minecraft/auth/AccountList.h>
+#include "icons/IconList.h"
+#include "net/HttpMetaCache.h"
+
+#include "updater/ExternalUpdater.h"
+
+#include "tools/JProfiler.h"
+#include "tools/JVisualVM.h"
+#include "tools/MCEditTool.h"
+
+#include "settings/INISettingsObject.h"
+#include "settings/Setting.h"
+
+#include "meta/Index.h"
+#include "translations/TranslationsModel.h"
+
+#include <DesktopServices.h>
+#include <FileSystem.h>
+#include <LocalPeer.h>
+
+#include <stdlib.h>
+#include "SysInfo.h"
+
+#ifdef Q_OS_LINUX
+#include <dlfcn.h>
+#include "MangoHud.h"
+#include "gamemode_client.h"
+#endif
+
+#if defined(Q_OS_LINUX)
+#include <sys/statvfs.h>
+#endif
+
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_OPENBSD)
+#include <sys/mount.h>
+#include <sys/types.h>
+#endif
+
+#if defined(Q_OS_MAC)
+#if defined(SPARKLE_ENABLED)
+#include "updater/MacSparkleUpdater.h"
+#endif
+#else
+#include "updater/PrismExternalUpdater.h"
+#endif
+
+#if defined Q_OS_WIN32
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+#include <windows.h>
+#include <QStyleHints>
+#endif
+
+#include "console/Console.h"
+
+#define STRINGIFY(x) #x
+#define TOSTRING(x) STRINGIFY(x)
+
+static const QLatin1String liveCheckFile("live.check");
+
+PixmapCache* PixmapCache::s_instance = nullptr;
+
+static bool isANSIColorConsole;
+
+static QString defaultLogFormat = QStringLiteral(
+    "%{time process}"
+    " "
+    "%{if-debug}Debug:%{endif}"
+    "%{if-info}Info:%{endif}"
+    "%{if-warning}Warning:%{endif}"
+    "%{if-critical}Critical:%{endif}"
+    "%{if-fatal}Fatal:%{endif}"
+    " "
+    "%{if-category}[%{category}] %{endif}"
+    "%{message}"
+    " "
+    "(%{function}:%{line})");
+
+#define ansi_reset "\x1b[0m"
+#define ansi_bold "\x1b[1m"
+#define ansi_reset_bold "\x1b[22m"
+#define ansi_faint "\x1b[2m"
+#define ansi_italic "\x1b[3m"
+#define ansi_red_fg "\x1b[31m"
+#define ansi_green_fg "\x1b[32m"
+#define ansi_yellow_fg "\x1b[33m"
+#define ansi_blue_fg "\x1b[34m"
+#define ansi_purple_fg "\x1b[35m"
+#define ansi_inverse "\x1b[7m"
+
+// clang-format off
+static QString ansiLogFormat = QStringLiteral(
+    ansi_faint "%{time process}" ansi_reset
+    " "
+    "%{if-debug}" ansi_bold ansi_green_fg "D:" ansi_reset "%{endif}"
+    "%{if-info}" ansi_bold ansi_blue_fg "I:" ansi_reset "%{endif}"
+    "%{if-warning}" ansi_bold ansi_yellow_fg "W:" ansi_reset_bold "%{endif}"
+    "%{if-critical}" ansi_bold ansi_red_fg "C:" ansi_reset_bold "%{endif}"
+    "%{if-fatal}" ansi_bold ansi_inverse ansi_red_fg "F:" ansi_reset_bold "%{endif}"
+    " "
+    "%{if-category}" ansi_bold "[%{category}]" ansi_reset_bold " %{endif}"
+    "%{message}"
+    " "
+    ansi_reset ansi_faint "(%{function}:%{line})" ansi_reset
+);
+// clang-format on
+
+#undef ansi_inverse
+#undef ansi_purple_fg
+#undef ansi_blue_fg
+#undef ansi_yellow_fg
+#undef ansi_green_fg
+#undef ansi_red_fg
+#undef ansi_italic
+#undef ansi_faint
+#undef ansi_bold
+#undef ansi_reset_bold
+#undef ansi_reset
+
+namespace {
+
+/** This is used so that we can output to the log file in addition to the CLI. */
+void appDebugOutput(QtMsgType type, const QMessageLogContext& context, const QString& msg)
+{
+    static std::mutex loggerMutex;
+    const std::lock_guard<std::mutex> lock(loggerMutex);  // synchronized, QFile logFile is not thread-safe
+
+    if (isANSIColorConsole) {
+        // ensure default is set for log file
+        qSetMessagePattern(defaultLogFormat);
+    }
+
+    QString out = qFormatLogMessage(type, context, msg);
+    if (APPLICATION->logModel) {
+        APPLICATION->logModel->append(MessageLevel::fromQtMsgType(type), out);
+    }
+
+    out += QChar::LineFeed;
+    APPLICATION->logFile->write(out.toUtf8());
+    APPLICATION->logFile->flush();
+
+    if (isANSIColorConsole) {
+        // format ansi for console;
+        qSetMessagePattern(ansiLogFormat);
+        out = qFormatLogMessage(type, context, msg);
+        out += QChar::LineFeed;
+    }
+
+    QTextStream(stderr) << out.toLocal8Bit();
+    fflush(stderr);
+}
+
+}  // namespace
+
+std::tuple<QDateTime, QString, QString, QString, QString> read_lock_File(const QString& path)
+{
+    auto contents = QString(FS::read(path));
+    auto lines = contents.split('\n');
+
+    QDateTime timestamp;
+    QString from, to, target, data_path;
+    for (auto line : lines) {
+        auto index = line.indexOf("=");
+        if (index < 0)
+            continue;
+        auto left = line.left(index);
+        auto right = line.mid(index + 1);
+        if (left.toLower() == "timestamp") {
+            timestamp = QDateTime::fromString(right, Qt::ISODate);
+        } else if (left.toLower() == "from") {
+            from = right;
+        } else if (left.toLower() == "to") {
+            to = right;
+        } else if (left.toLower() == "target") {
+            target = right;
+        } else if (left.toLower() == "data_path") {
+            data_path = right;
+        }
+    }
+    return std::make_tuple(timestamp, from, to, target, data_path);
+}
+
+Application::Application(int& argc, char** argv) : QApplication(argc, argv)
+{
+    if (console::isConsole()) {
+        isANSIColorConsole = true;
+    }
+
+    setOrganizationName(BuildConfig.LAUNCHER_NAME);
+    setOrganizationDomain(BuildConfig.LAUNCHER_DOMAIN);
+    setApplicationName(BuildConfig.LAUNCHER_NAME);
+    setApplicationDisplayName(QString("%1 %2").arg(BuildConfig.LAUNCHER_DISPLAYNAME, BuildConfig.printableVersionString()));
+    setApplicationVersion(BuildConfig.printableVersionString() + "\n" + BuildConfig.GIT_COMMIT);
+    setDesktopFileName(BuildConfig.LAUNCHER_APPID);
+    m_startTime = QDateTime::currentDateTime();
+
+    // Don't quit on hiding the last window
+    this->setQuitOnLastWindowClosed(false);
+    this->setQuitLockEnabled(false);
+
+    // Commandline parsing
+    QCommandLineParser parser;
+    parser.setApplicationDescription(BuildConfig.LAUNCHER_DISPLAYNAME);
+
+    parser.addOptions(
+        { { { "d", "dir" }, "Use a custom path as application root (use '.' for current directory)", "directory" },
+          { { "l", "launch" }, "Launch the specified instance (by instance ID)", "instance" },
+          { { "s", "server" }, "Join the specified server on launch (only valid in combination with --launch)", "address" },
+          { { "w", "world" }, "Join the specified world on launch (only valid in combination with --launch)", "world" },
+          { { "a", "profile" }, "Use the account specified by its profile name (only valid in combination with --launch)", "profile" },
+          { { "o", "offline" }, "Launch offline, with given player name (only valid in combination with --launch)", "offline" },
+          { "alive", "Write a small '" + liveCheckFile + "' file after the launcher starts" },
+          { { "I", "import" }, "Import instance or resource from specified local path or URL", "url" },
+          { "show", "Opens the window for the specified instance (by instance ID)", "show" } });
+    // Has to be positional for some OS to handle that properly
+    parser.addPositionalArgument("URL", "Import the resource(s) at the given URL(s) (same as -I / --import)", "[URL...]");
+
+    parser.addHelpOption();
+    parser.addVersionOption();
+
+    parser.process(arguments());
+
+    m_instanceIdToLaunch = parser.value("launch");
+    m_serverToJoin = parser.value("server");
+    m_worldToJoin = parser.value("world");
+    m_profileToUse = parser.value("profile");
+    if (parser.isSet("offline")) {
+        m_offline = true;
+        m_offlineName = parser.value("offline");
+    }
+    m_liveCheck = parser.isSet("alive");
+
+    m_instanceIdToShowWindowOf = parser.value("show");
+
+    for (auto url : parser.values("import")) {
+        m_urlsToImport.append(normalizeImportUrl(url));
+    }
+
+    // treat unspecified positional arguments as import urls
+    for (auto url : parser.positionalArguments()) {
+        m_urlsToImport.append(normalizeImportUrl(url));
+    }
+
+    // error if --launch is missing with --server or --profile
+    if ((!m_serverToJoin.isEmpty() || !m_worldToJoin.isEmpty() || !m_profileToUse.isEmpty() || m_offline) &&
+        m_instanceIdToLaunch.isEmpty()) {
+        std::cerr << "--server, --profile and --offline can only be used in combination with --launch!" << std::endl;
+        m_status = Application::Failed;
+        return;
+    }
+
+    QString origcwdPath = QDir::currentPath();
+    QString binPath = applicationDirPath();
+
+    {
+        // Root path is used for updates and portable data
+#if defined(Q_OS_LINUX) || defined(Q_OS_FREEBSD) || defined(Q_OS_OPENBSD)
+        QDir foo(FS::PathCombine(binPath, ".."));  // typically portable-root or /usr
+        m_rootPath = foo.absolutePath();
+#elif defined(Q_OS_WIN32)
+        m_rootPath = binPath;
+#elif defined(Q_OS_MAC)
+        QDir foo(FS::PathCombine(binPath, "../.."));
+        m_rootPath = foo.absolutePath();
+        // on macOS, touch the root to force Finder to reload the .app metadata (and fix any icon change issues)
+        FS::updateTimestamp(m_rootPath);
+#endif
+    }
+
+    QString adjustedBy;
+    QString dataPath;
+    // change folder
+    QString dataDirEnv;
+    QString dirParam = parser.value("dir");
+    if (!dirParam.isEmpty()) {
+        // the dir param. it makes multimc data path point to whatever the user specified
+        // on command line
+        adjustedBy = "Command line";
+        dataPath = dirParam;
+    } else if (dataDirEnv = QProcessEnvironment::systemEnvironment().value(QString("%1_DATA_DIR").arg(BuildConfig.LAUNCHER_NAME.toUpper()));
+               !dataDirEnv.isEmpty()) {
+        adjustedBy = "System environment";
+        dataPath = dataDirEnv;
+    } else {
+        QDir foo;
+        if (DesktopServices::isSnap()) {
+            foo = QDir(getenv("SNAP_USER_COMMON"));
+        } else {
+            foo = QDir(FS::PathCombine(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation), ".."));
+        }
+
+        dataPath = foo.absolutePath();
+        adjustedBy = "Persistent data path";
+
+#ifndef Q_OS_MACOS
+        if (auto portableUserData = FS::PathCombine(m_rootPath, "UserData"); QDir(portableUserData).exists()) {
+            dataPath = portableUserData;
+            adjustedBy = "Portable user data path";
+            m_portable = true;
+        } else if (QFile::exists(FS::PathCombine(m_rootPath, "portable.txt"))) {
+            dataPath = m_rootPath;
+            adjustedBy = "Portable data path";
+            m_portable = true;
+        }
+#endif
+    }
+
+    if (!FS::ensureFolderPathExists(dataPath)) {
+        showFatalErrorMessage(
+            "The launcher data folder could not be created.",
+            QString("The launcher data folder could not be created.\n"
+                    "\n"
+                    "Make sure you have the right permissions to the launcher data folder and any folder needed to access it.\n"
+                    "(%1)\n"
+                    "\n"
+                    "The launcher cannot continue until you fix this problem.")
+                .arg(dataPath));
+        return;
+    }
+    if (!QDir::setCurrent(dataPath)) {
+        showFatalErrorMessage("The launcher data folder could not be opened.",
+                              QString("The launcher data folder could not be opened.\n"
+                                      "\n"
+                                      "Make sure you have the right permissions to the launcher data folder.\n"
+                                      "(%1)\n"
+                                      "\n"
+                                      "The launcher cannot continue until you fix this problem.")
+                                  .arg(dataPath));
+        return;
+    }
+    m_dataPath = dataPath;
+
+    /*
+     * Establish the mechanism for communication with an already running PrismLauncher that uses the same data path.
+     * If there is one, tell it what the user actually wanted to do and exit.
+     * We want to initialize this before logging to avoid messing with the log of a potential already running copy.
+     */
+    auto appID = ApplicationId::fromPathAndVersion(QDir::currentPath(), BuildConfig.printableVersionString());
+    {
+        // FIXME: you can run the same binaries with multiple data dirs and they won't clash. This could cause issues for updates.
+        m_peerInstance = new LocalPeer(this, appID);
+        connect(m_peerInstance, &LocalPeer::messageReceived, this, &Application::messageReceived);
+        if (m_peerInstance->isClient()) {
+            bool sentMessage = false;
+            int timeout = 2000;
+
+            if (m_instanceIdToLaunch.isEmpty()) {
+                ApplicationMessage activate;
+                activate.command = "activate";
+                sentMessage = m_peerInstance->sendMessage(activate.serialize(), timeout);
+
+                if (!m_urlsToImport.isEmpty()) {
+                    for (auto url : m_urlsToImport) {
+                        ApplicationMessage import;
+                        import.command = "import";
+                        import.args.insert("url", url.toString());
+                        sentMessage = m_peerInstance->sendMessage(import.serialize(), timeout);
+                    }
+                }
+            } else {
+                ApplicationMessage launch;
+                launch.command = "launch";
+                launch.args["id"] = m_instanceIdToLaunch;
+
+                if (!m_serverToJoin.isEmpty()) {
+                    launch.args["server"] = m_serverToJoin;
+                } else if (!m_worldToJoin.isEmpty()) {
+                    launch.args["world"] = m_worldToJoin;
+                }
+                if (!m_profileToUse.isEmpty()) {
+                    launch.args["profile"] = m_profileToUse;
+                }
+                if (m_offline) {
+                    launch.args["offline_enabled"] = "true";
+                    launch.args["offline_name"] = m_offlineName;
+                }
+                sentMessage = m_peerInstance->sendMessage(launch.serialize(), timeout);
+            }
+            if (sentMessage) {
+                m_status = Application::Succeeded;
+                return;
+            } else {
+                std::cerr << "Unable to redirect command to already running instance\n";
+                // C function not Qt function - event loop not started yet
+                ::exit(1);
+            }
+        }
+    }
+
+    // init the logger
+    {
+        static const QString baseLogFile = BuildConfig.LAUNCHER_NAME + "-%0.log";
+        static const QString logBase = FS::PathCombine("logs", baseLogFile);
+        if (FS::ensureFolderPathExists("logs")) {  // if this did not fail
+            for (auto i = 0; i <= 4; i++)
+                if (auto oldName = baseLogFile.arg(i);
+                    QFile::exists(oldName))  // do not pointlessly delete new files if the old ones are not there
+                    FS::move(oldName, logBase.arg(i));
+        }
+
+        for (auto i = 4; i > 0; i--)
+            FS::move(logBase.arg(i - 1), logBase.arg(i));
+
+        logFile = std::unique_ptr<QFile>(new QFile(logBase.arg(0)));
+        if (!logFile->open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate)) {
+            showFatalErrorMessage("The launcher data folder is not writable!",
+                                  QString("The launcher couldn't create a log file - the data folder is not writable.\n"
+                                          "\n"
+                                          "Make sure you have write permissions to the data folder.\n"
+                                          "(%1)\n"
+                                          "\n"
+                                          "The launcher cannot continue until you fix this problem.")
+                                      .arg(dataPath));
+            return;
+        }
+        qInstallMessageHandler(appDebugOutput);
+        qSetMessagePattern(defaultLogFormat);
+
+        logModel.reset(new LogModel(this));
+
+        bool foundLoggingRules = false;
+
+        auto logRulesFile = QStringLiteral("qtlogging.ini");
+        auto logRulesPath = FS::PathCombine(dataPath, logRulesFile);
+
+        qInfo() << "Testing" << logRulesPath << "...";
+        foundLoggingRules = QFile::exists(logRulesPath);
+
+        // search the dataPath()
+        // seach app data standard path
+        if (!foundLoggingRules && !isPortable() && dirParam.isEmpty() && dataDirEnv.isEmpty()) {
+            logRulesPath = QStandardPaths::locate(QStandardPaths::AppDataLocation, FS::PathCombine("..", logRulesFile));
+            if (!logRulesPath.isEmpty()) {
+                qInfo() << "Found" << logRulesPath << "...";
+                foundLoggingRules = true;
+            }
+        }
+        // seach root path
+        if (!foundLoggingRules) {
+#if defined(Q_OS_LINUX) || defined(Q_OS_FREEBSD) || defined(Q_OS_OPENBSD)
+            logRulesPath = FS::PathCombine(m_rootPath, "share", BuildConfig.LAUNCHER_NAME, logRulesFile);
+#else
+            logRulesPath = FS::PathCombine(m_rootPath, logRulesFile);
+#endif
+            qInfo() << "Testing" << logRulesPath << "...";
+            foundLoggingRules = QFile::exists(logRulesPath);
+        }
+
+        if (foundLoggingRules) {
+            // load and set logging rules
+            qInfo() << "Loading logging rules from:" << logRulesPath;
+            QSettings loggingRules(logRulesPath, QSettings::IniFormat);
+            loggingRules.beginGroup("Rules");
+            QStringList rule_names = loggingRules.childKeys();
+            QStringList rules;
+            qInfo() << "Setting log rules:";
+            for (auto rule_name : rule_names) {
+                auto rule = QString("%1=%2").arg(rule_name).arg(loggingRules.value(rule_name).toString());
+                rules.append(rule);
+                qInfo() << "    " << rule;
+            }
+            auto rules_str = rules.join("\n");
+            QLoggingCategory::setFilterRules(rules_str);
+        }
+
+        qInfo() << "<> Log initialized.";
+    }
+
+    {
+        bool migrated = false;
+
+        if (!migrated)
+            migrated = handleDataMigration(
+                dataPath, FS::PathCombine(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation), "../../PolyMC"), "PolyMC",
+                "polymc.cfg");
+        if (!migrated)
+            migrated = handleDataMigration(
+                dataPath, FS::PathCombine(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation), "../../multimc"), "MultiMC",
+                "multimc.cfg");
+    }
+
+    {
+        qInfo() << qPrintable(BuildConfig.LAUNCHER_DISPLAYNAME + ", " + QString(BuildConfig.LAUNCHER_COPYRIGHT).replace("\n", ", "));
+        qInfo() << "Version                    :" << BuildConfig.printableVersionString();
+        qInfo() << "Platform                   :" << BuildConfig.BUILD_PLATFORM;
+        qInfo() << "Git commit                 :" << BuildConfig.GIT_COMMIT;
+        qInfo() << "Git refspec                :" << BuildConfig.GIT_REFSPEC;
+        qInfo() << "Compiled for               :" << BuildConfig.systemID();
+        qInfo() << "Compiled by                :" << BuildConfig.compilerID();
+        qInfo() << "Build Artifact             :" << BuildConfig.BUILD_ARTIFACT;
+        qInfo() << "Updates Enabled            :" << (updaterEnabled() ? "Yes" : "No");
+        if (adjustedBy.size()) {
+            qInfo() << "Work dir before adjustment :" << origcwdPath;
+            qInfo() << "Work dir after adjustment  :" << QDir::currentPath();
+            qInfo() << "Adjusted by                :" << adjustedBy;
+        } else {
+            qInfo() << "Work dir                   :" << QDir::currentPath();
+        }
+        qInfo() << "Binary path                :" << binPath;
+        qInfo() << "Application root path      :" << m_rootPath;
+        if (!m_instanceIdToLaunch.isEmpty()) {
+            qInfo() << "ID of instance to launch   :" << m_instanceIdToLaunch;
+        }
+        if (!m_serverToJoin.isEmpty()) {
+            qInfo() << "Address of server to join  :" << m_serverToJoin;
+        } else if (!m_worldToJoin.isEmpty()) {
+            qInfo() << "Name of the world to join  :" << m_worldToJoin;
+        }
+        qInfo() << "<> Paths set.";
+    }
+
+    if (m_liveCheck) {
+        QFile check(liveCheckFile);
+        if (check.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+            auto payload = appID.toString().toUtf8();
+            if (check.write(payload) == payload.size()) {
+                check.close();
+            } else {
+                qWarning() << "Could not write into" << liveCheckFile << "!";
+                check.remove();  // also closes file!
+            }
+        } else {
+            qWarning() << "Could not open" << liveCheckFile << "for writing!";
+        }
+    }
+
+    // Initialize application settings
+    {
+        // Provide a fallback for migration from PolyMC
+        m_settings.reset(new INISettingsObject({ BuildConfig.LAUNCHER_CONFIGFILE, "polymc.cfg", "multimc.cfg" }, this));
+
+        // Theming
+        m_settings->registerSetting("IconTheme", QString());
+        m_settings->registerSetting("ApplicationTheme", QString());
+        m_settings->registerSetting("BackgroundCat", QString("kitteh"));
+
+        // Remembered state
+        m_settings->registerSetting("LastUsedGroupForNewInstance", QString());
+
+        m_settings->registerSetting("MenuBarInsteadOfToolBar", false);
+
+        m_settings->registerSetting("NumberOfConcurrentTasks", 10);
+        m_settings->registerSetting("NumberOfConcurrentDownloads", 6);
+        m_settings->registerSetting("NumberOfManualRetries", 1);
+        m_settings->registerSetting("RequestTimeout", 60);
+
+        QString defaultMonospace;
+        int defaultSize = 11;
+#ifdef Q_OS_WIN32
+        defaultMonospace = "Courier";
+        defaultSize = 10;
+#elif defined(Q_OS_MAC)
+        defaultMonospace = "Menlo";
+#else
+        defaultMonospace = "Monospace";
+#endif
+
+        // resolve the font so the default actually matches
+        QFont consoleFont;
+        consoleFont.setFamily(defaultMonospace);
+        consoleFont.setStyleHint(QFont::Monospace);
+        consoleFont.setFixedPitch(true);
+        QFontInfo consoleFontInfo(consoleFont);
+        QString resolvedDefaultMonospace = consoleFontInfo.family();
+        QFont resolvedFont(resolvedDefaultMonospace);
+        qDebug().nospace() << "Detected default console font: " << resolvedDefaultMonospace
+                           << ", substitutions: " << resolvedFont.substitutions().join(',');
+
+        m_settings->registerSetting("ConsoleFont", resolvedDefaultMonospace);
+        m_settings->registerSetting("ConsoleFontSize", defaultSize);
+        m_settings->registerSetting("ConsoleMaxLines", 100000);
+        m_settings->registerSetting("ConsoleOverflowStop", true);
+
+        logModel->setMaxLines(getConsoleMaxLines(settings()));
+        logModel->setStopOnOverflow(shouldStopOnConsoleOverflow(settings()));
+        logModel->setOverflowMessage(tr("Cannot display this log since the log length surpassed %1 lines.").arg(logModel->getMaxLines()));
+
+        // Folders
+        m_settings->registerSetting("InstanceDir", "instances");
+        m_settings->registerSetting({ "CentralModsDir", "ModsDir" }, "mods");
+        m_settings->registerSetting("IconsDir", "icons");
+        m_settings->registerSetting("DownloadsDir", QStandardPaths::writableLocation(QStandardPaths::DownloadLocation));
+        m_settings->registerSetting("DownloadsDirWatchRecursive", false);
+        m_settings->registerSetting("MoveModsFromDownloadsDir", false);
+        m_settings->registerSetting("SkinsDir", "skins");
+        m_settings->registerSetting("JavaDir", "java");
+
+#ifdef Q_OS_MACOS
+        // Folder security-scoped bookmarks
+        m_settings->registerSetting("InstanceDirBookmark", "");
+        m_settings->registerSetting("CentralModsDirBookmark", "");
+        m_settings->registerSetting("IconsDirBookmark", "");
+        m_settings->registerSetting("DownloadsDirBookmark", "");
+        m_settings->registerSetting("SkinsDirBookmark", "");
+        m_settings->registerSetting("JavaDirBookmark", "");
+#endif
+
+        // Editors
+        m_settings->registerSetting("JsonEditor", QString());
+
+        // Language
+        m_settings->registerSetting("Language", QString());
+        m_settings->registerSetting("UseSystemLocale", false);
+
+        // Console
+        m_settings->registerSetting("ShowConsole", false);
+        m_settings->registerSetting("AutoCloseConsole", false);
+        m_settings->registerSetting("ShowConsoleOnError", true);
+        m_settings->registerSetting("LogPrePostOutput", true);
+
+        // Window Size
+        m_settings->registerSetting({ "LaunchMaximized", "MCWindowMaximize" }, false);
+        m_settings->registerSetting({ "MinecraftWinWidth", "MCWindowWidth" }, 854);
+        m_settings->registerSetting({ "MinecraftWinHeight", "MCWindowHeight" }, 480);
+
+        // Proxy Settings
+        m_settings->registerSetting("ProxyType", "None");
+        m_settings->registerSetting({ "ProxyAddr", "ProxyHostName" }, "127.0.0.1");
+        m_settings->registerSetting("ProxyPort", 8080);
+        m_settings->registerSetting({ "ProxyUser", "ProxyUsername" }, "");
+        m_settings->registerSetting({ "ProxyPass", "ProxyPassword" }, "");
+
+        // Memory
+        m_settings->registerSetting({ "MinMemAlloc", "MinMemoryAlloc" }, 512);
+        m_settings->registerSetting({ "MaxMemAlloc", "MaxMemoryAlloc" }, SysInfo::suitableMaxMem());
+        m_settings->registerSetting("PermGen", 128);
+
+        // Java Settings
+        m_settings->registerSetting("JavaPath", "");
+        m_settings->registerSetting("JavaSignature", "");
+        m_settings->registerSetting("JavaArchitecture", "");
+        m_settings->registerSetting("JavaRealArchitecture", "");
+        m_settings->registerSetting("JavaVersion", "");
+        m_settings->registerSetting("JavaVendor", "");
+        m_settings->registerSetting("LastHostname", "");
+        m_settings->registerSetting("JvmArgs", "");
+        m_settings->registerSetting("IgnoreJavaCompatibility", false);
+        m_settings->registerSetting("IgnoreJavaWizard", false);
+        auto defaultEnableAutoJava = m_settings->get("JavaPath").toString().isEmpty();
+        m_settings->registerSetting("AutomaticJavaSwitch", defaultEnableAutoJava);
+        m_settings->registerSetting("AutomaticJavaDownload", defaultEnableAutoJava);
+        m_settings->registerSetting("UserAskedAboutAutomaticJavaDownload", false);
+
+        // Legacy settings
+        m_settings->registerSetting("OnlineFixes", false);
+
+        // Native library workarounds
+        m_settings->registerSetting("UseNativeOpenAL", false);
+        m_settings->registerSetting("CustomOpenALPath", "");
+        m_settings->registerSetting("UseNativeGLFW", false);
+        m_settings->registerSetting("CustomGLFWPath", "");
+
+        // Performance related options
+        m_settings->registerSetting("EnableFeralGamemode", false);
+        m_settings->registerSetting("EnableMangoHud", false);
+        m_settings->registerSetting("UseDiscreteGpu", false);
+        m_settings->registerSetting("UseZink", false);
+
+        // Game time
+        m_settings->registerSetting("ShowGameTime", true);
+        m_settings->registerSetting("ShowGlobalGameTime", true);
+        m_settings->registerSetting("RecordGameTime", true);
+        m_settings->registerSetting("ShowGameTimeWithoutDays", false);
+
+        // Minecraft mods
+        m_settings->registerSetting("ModMetadataDisabled", false);
+        m_settings->registerSetting("ModDependenciesDisabled", false);
+        m_settings->registerSetting("SkipModpackUpdatePrompt", false);
+
+        // Minecraft offline player name
+        m_settings->registerSetting("LastOfflinePlayerName", "");
+
+        // Wrapper command for launch
+        m_settings->registerSetting("WrapperCommand", "");
+
+        // Custom Commands
+        m_settings->registerSetting({ "PreLaunchCommand", "PreLaunchCmd" }, "");
+        m_settings->registerSetting({ "PostExitCommand", "PostExitCmd" }, "");
+
+        // The cat
+        m_settings->registerSetting("TheCat", false);
+        m_settings->registerSetting("CatOpacity", 100);
+        m_settings->registerSetting("CatFit", "fit");
+
+        m_settings->registerSetting("StatusBarVisible", true);
+
+        m_settings->registerSetting("ToolbarsLocked", false);
+
+        // Instance
+        m_settings->registerSetting("InstSortMode", "Name");
+        m_settings->registerSetting("InstRenamingMode", "AskEverytime");
+        m_settings->registerSetting("SelectedInstance", QString());
+
+        // Window state and geometry
+        m_settings->registerSetting("MainWindowState", "");
+        m_settings->registerSetting("MainWindowGeometry", "");
+
+        m_settings->registerSetting("ConsoleWindowState", "");
+        m_settings->registerSetting("ConsoleWindowGeometry", "");
+
+        m_settings->registerSetting("SettingsGeometry", "");
+
+        m_settings->registerSetting("PagedGeometry", "");
+
+        m_settings->registerSetting("NewInstanceGeometry", "");
+
+        m_settings->registerSetting("UpdateDialogGeometry", "");
+
+        m_settings->registerSetting("ModDownloadGeometry", "");
+        m_settings->registerSetting("RPDownloadGeometry", "");
+        m_settings->registerSetting("TPDownloadGeometry", "");
+        m_settings->registerSetting("ShaderDownloadGeometry", "");
+        m_settings->registerSetting("DataPackDownloadGeometry", "");
+
+        // data pack window
+        // in future, more pages may be added - so this name is chosen to avoid needing migration
+        m_settings->registerSetting("WorldManagementGeometry", "");
+
+        // HACK: This code feels so stupid is there a less stupid way of doing this?
+        {
+            m_settings->registerSetting("PastebinURL", "");
+            m_settings->registerSetting("PastebinType", PasteUpload::PasteType::Mclogs);
+            m_settings->registerSetting("PastebinCustomAPIBase", "");
+
+            QString pastebinURL = m_settings->get("PastebinURL").toString();
+
+            bool userHadDefaultPastebin = pastebinURL == "https://0x0.st";
+            if (!pastebinURL.isEmpty() && !userHadDefaultPastebin) {
+                m_settings->set("PastebinType", PasteUpload::PasteType::NullPointer);
+                m_settings->set("PastebinCustomAPIBase", pastebinURL);
+                m_settings->reset("PastebinURL");
+            }
+
+            bool ok;
+            int pasteType = m_settings->get("PastebinType").toInt(&ok);
+            // If PastebinType is invalid then reset the related settings.
+            if (!ok || !(PasteUpload::PasteType::First <= pasteType && pasteType <= PasteUpload::PasteType::Last)) {
+                m_settings->reset("PastebinType");
+                m_settings->reset("PastebinCustomAPIBase");
+            }
+        }
+        {
+            auto resetIfInvalid = [this](const Setting* setting) {
+                if (const QUrl url(setting->get().toString()); !url.isValid() || (url.scheme() != "http" && url.scheme() != "https")) {
+                    m_settings->reset(setting->id());
+                }
+            };
+
+            // Meta URL
+            resetIfInvalid(m_settings->registerSetting("MetaURLOverride", "").get());
+
+            // Resource URL
+            resetIfInvalid(m_settings->registerSetting({ "ResourceURLOverride", "ResourceURL" }, "").get());
+
+            // Legacy FML libs URL
+            resetIfInvalid(m_settings->registerSetting("LegacyFMLLibsURLOverride", "").get());
+        }
+
+        m_settings->registerSetting("CloseAfterLaunch", false);
+        m_settings->registerSetting("QuitAfterGameStop", false);
+
+        m_settings->registerSetting("Env", "{}");
+
+        // Custom Microsoft Authentication Client ID
+        m_settings->registerSetting("MSAClientIDOverride", "");
+
+        // Custom Flame API Key
+        {
+            m_settings->registerSetting("CFKeyOverride", "");
+            m_settings->registerSetting("FlameKeyOverride", "");
+
+            QString flameKey = m_settings->get("CFKeyOverride").toString();
+
+            if (!flameKey.isEmpty())
+                m_settings->set("FlameKeyOverride", flameKey);
+            m_settings->reset("CFKeyOverride");
+        }
+        m_settings->registerSetting("ModrinthToken", "");
+        m_settings->registerSetting("UserAgentOverride", "");
+
+        // FTBApp instances
+        m_settings->registerSetting("FTBAppInstancesPath", "");
+
+        // Custom Technic Client ID
+        m_settings->registerSetting("TechnicClientID", "");
+
+        // Init page provider
+        {
+            m_globalSettingsProvider = std::make_unique<GenericPageProvider>(tr("Settings"));
+            m_globalSettingsProvider->addPage<LauncherPage>();
+            m_globalSettingsProvider->addPage<LanguagePage>();
+            m_globalSettingsProvider->addPage<AppearancePage>();
+            m_globalSettingsProvider->addPage<MinecraftPage>();
+            m_globalSettingsProvider->addPage<JavaPage>();
+            m_globalSettingsProvider->addPage<AccountListPage>();
+            m_globalSettingsProvider->addPage<APIPage>();
+            m_globalSettingsProvider->addPage<ExternalToolsPage>();
+            m_globalSettingsProvider->addPage<ProxyPage>();
+        }
+
+        PixmapCache::setInstance(new PixmapCache(this));
+
+        qInfo() << "<> Settings loaded.";
+    }
+
+#ifndef QT_NO_ACCESSIBILITY
+    QAccessible::installFactory(groupViewAccessibleFactory);
+#endif /* !QT_NO_ACCESSIBILITY */
+
+    // initialize network access and proxy setup
+    {
+        m_network.reset(new QNetworkAccessManager());
+        QString proxyTypeStr = settings()->get("ProxyType").toString();
+        QString addr = settings()->get("ProxyAddr").toString();
+        int port = settings()->get("ProxyPort").value<qint16>();
+        QString user = settings()->get("ProxyUser").toString();
+        QString pass = settings()->get("ProxyPass").toString();
+        updateProxySettings(proxyTypeStr, addr, port, user, pass);
+        qInfo() << "<> Network done.";
+    }
+
+    // load translations
+    {
+        m_translations.reset(new TranslationsModel("translations"));
+        auto bcp47Name = m_settings->get("Language").toString();
+        m_translations->selectLanguage(bcp47Name);
+        qInfo() << "Your language is" << bcp47Name;
+        qInfo() << "<> Translations loaded.";
+    }
+
+    // Instance icons
+    {
+        auto setting = APPLICATION->settings()->getSetting("IconsDir");
+        QStringList instFolders = { ":/icons/multimc/32x32/instances/", ":/icons/multimc/50x50/instances/",
+                                    ":/icons/multimc/128x128/instances/", ":/icons/multimc/scalable/instances/" };
+        m_icons.reset(new IconList(instFolders, setting->get().toString()));
+        connect(setting.get(), &Setting::SettingChanged,
+                [this](const Setting&, QVariant value) { m_icons->directoryChanged(value.toString()); });
+        qInfo() << "<> Instance icons initialized.";
+    }
+
+    // Themes
+    m_themeManager = std::make_unique<ThemeManager>();
+
+#ifdef Q_OS_MACOS
+    // for macOS: getting directory settings will generate URL security-scoped bookmarks if needed and not present
+    // this facilitates a smooth transition from a non-sandboxed version of the launcher, that likely can access the directory,
+    // and a sandboxed version that can't access the directory without a bookmark
+    // this section can likely be removed once the sandboxed version has been released for a while and migrations aren't done anymore
+    {
+        m_settings->get("InstanceDir");
+        m_settings->get("CentralModsDir");
+        m_settings->get("IconsDir");
+        m_settings->get("DownloadsDir");
+        m_settings->get("SkinsDir");
+        m_settings->get("JavaDir");
+    }
+#endif
+
+    // initialize and load all instances
+    {
+        auto InstDirSetting = m_settings->getSetting("InstanceDir");
+        // instance path: check for problems with '!' in instance path and warn the user in the log
+        // and remember that we have to show him a dialog when the gui starts (if it does so)
+        QString instDir = m_settings->get("InstanceDir").toString();
+        qInfo() << "Instance path              :" << instDir;
+        if (FS::checkProblemticPathJava(QDir(instDir))) {
+            qWarning() << "Your instance path contains \'!\' and this is known to cause java problems!";
+        }
+        m_instances.reset(new InstanceList(m_settings.get(), instDir, this));
+        connect(InstDirSetting.get(), &Setting::SettingChanged, m_instances.get(), &InstanceList::on_InstFolderChanged);
+        qInfo() << "Loading Instances...";
+        m_instances->loadList();
+        qInfo() << "<> Instances loaded.";
+    }
+
+    // and accounts
+    {
+        m_accounts.reset(new AccountList(this));
+        qInfo() << "Loading accounts...";
+        m_accounts->setListFilePath("accounts.json", true);
+        m_accounts->loadList();
+        m_accounts->fillQueue();
+        qInfo() << "<> Accounts loaded.";
+    }
+
+    // init the http meta cache
+    {
+        m_metacache.reset(new HttpMetaCache("metacache"));
+        m_metacache->addBase("asset_indexes", QDir("assets/indexes").absolutePath());
+        m_metacache->addBase("libraries", QDir("libraries").absolutePath());
+        m_metacache->addBase("fmllibs", QDir("mods/minecraftforge/libs").absolutePath());
+        m_metacache->addBase("general", QDir("cache").absolutePath());
+        m_metacache->addBase("ATLauncherPacks", QDir("cache/ATLauncherPacks").absolutePath());
+        m_metacache->addBase("FTBPacks", QDir("cache/FTBPacks").absolutePath());
+        m_metacache->addBase("TechnicPacks", QDir("cache/TechnicPacks").absolutePath());
+        m_metacache->addBase("FlamePacks", QDir("cache/FlamePacks").absolutePath());
+        m_metacache->addBase("FlameMods", QDir("cache/FlameMods").absolutePath());
+        m_metacache->addBase("ModrinthPacks", QDir("cache/ModrinthPacks").absolutePath());
+        m_metacache->addBase("ModrinthModpacks", QDir("cache/ModrinthModpacks").absolutePath());
+        m_metacache->addBase("translations", QDir("translations").absolutePath());
+        m_metacache->addBase("meta", QDir("meta").absolutePath());
+        m_metacache->addBase("java", QDir("cache/java").absolutePath());
+        m_metacache->addBase("feed", QDir("cache/feed").absolutePath());
+        m_metacache->Load();
+        qInfo() << "<> Cache initialized.";
+    }
+
+    // now we have network, download translation updates
+    m_translations->downloadIndex();
+
+    // FIXME: what to do with these?
+    m_profilers.insert("jprofiler", std::shared_ptr<BaseProfilerFactory>(new JProfilerFactory()));
+    m_profilers.insert("jvisualvm", std::shared_ptr<BaseProfilerFactory>(new JVisualVMFactory()));
+    m_profilers.insert("generic", std::shared_ptr<BaseProfilerFactory>(new GenericProfilerFactory()));
+    for (auto profiler : m_profilers.values()) {
+        profiler->registerSettings(m_settings.get());
+    }
+
+    // Create the MCEdit thing... why is this here?
+    {
+        m_mcedit.reset(new MCEditTool(m_settings.get()));
+    }
+
+#ifdef Q_OS_MACOS
+    connect(this, &Application::clickedOnDock, [this]() { this->showMainWindow(); });
+#endif
+
+    connect(this, &Application::aboutToQuit, [this]() {
+        if (m_instances) {
+            // save any remaining instance state
+            m_instances->saveNow();
+        }
+        if (logFile) {
+            logFile->flush();
+            logFile->close();
+        }
+    });
+
+    updateCapabilities();
+
+    detectLibraries();
+
+    // check update locks
+    {
+        auto update_log_path = FS::PathCombine(m_dataPath, "logs", "prism_launcher_update.log");
+
+        auto update_lock = QFileInfo(FS::PathCombine(m_dataPath, ".prism_launcher_update.lock"));
+        if (update_lock.exists()) {
+            auto [timestamp, from, to, target, data_path] = read_lock_File(update_lock.absoluteFilePath());
+            auto infoMsg = tr("This installation has a update lock file present at: %1\n"
+                              "\n"
+                              "Timestamp: %2\n"
+                              "Updating from version %3 to %4\n"
+                              "Target install path: %5\n"
+                              "Data Path: %6"
+                              "\n"
+                              "This likely means that a update attempt failed. Please ensure your installation is in working order before "
+                              "proceeding.\n"
+                              "Check the Prism Launcher updater log at: \n"
+                              "%7\n"
+                              "for details on the last update attempt.\n"
+                              "\n"
+                              "To delete this lock and proceed select \"Ignore\" below.")
+                               .arg(update_lock.absoluteFilePath())
+                               .arg(timestamp.toString(Qt::ISODate), from, to, target, data_path)
+                               .arg(update_log_path);
+            auto msgBox = QMessageBox(QMessageBox::Warning, tr("Update In Progress"), infoMsg, QMessageBox::Ignore | QMessageBox::Abort);
+            msgBox.setDefaultButton(QMessageBox::Abort);
+            msgBox.setModal(true);
+            msgBox.setDetailedText(FS::read(update_log_path));
+            msgBox.setMinimumWidth(460);
+            msgBox.adjustSize();
+            auto res = msgBox.exec();
+            switch (res) {
+                case QMessageBox::Ignore: {
+                    FS::deletePath(update_lock.absoluteFilePath());
+                    break;
+                }
+                case QMessageBox::Abort:
+                    [[fallthrough]];
+                default: {
+                    qDebug() << "Exiting because update lockfile is present";
+                    QMetaObject::invokeMethod(this, []() { exit(1); }, Qt::QueuedConnection);
+                    return;
+                }
+            }
+        }
+
+        auto update_fail_marker = QFileInfo(FS::PathCombine(m_dataPath, ".prism_launcher_update.fail"));
+        if (update_fail_marker.exists()) {
+            auto infoMsg = tr("An update attempt failed\n"
+                              "\n"
+                              "Please ensure your installation is in working order before "
+                              "proceeding.\n"
+                              "Check the Prism Launcher updater log at: \n"
+                              "%1\n"
+                              "for details on the last update attempt.")
+                               .arg(update_log_path);
+            auto msgBox = QMessageBox(QMessageBox::Warning, tr("Update Failed"), infoMsg, QMessageBox::Ignore | QMessageBox::Abort);
+            msgBox.setDefaultButton(QMessageBox::Abort);
+            msgBox.setModal(true);
+            msgBox.setDetailedText(FS::read(update_log_path));
+            msgBox.setMinimumWidth(460);
+            msgBox.adjustSize();
+            auto res = msgBox.exec();
+            switch (res) {
+                case QMessageBox::Ignore: {
+                    FS::deletePath(update_fail_marker.absoluteFilePath());
+                    break;
+                }
+                case QMessageBox::Abort:
+                    [[fallthrough]];
+                default: {
+                    qDebug() << "Exiting because update lockfile is present";
+                    QMetaObject::invokeMethod(this, []() { exit(1); }, Qt::QueuedConnection);
+                    return;
+                }
+            }
+        }
+
+        auto update_success_marker = QFileInfo(FS::PathCombine(m_dataPath, ".prism_launcher_update.success"));
+        if (update_success_marker.exists()) {
+            auto infoMsg = tr("Update succeeded\n"
+                              "\n"
+                              "You are now running %1 .\n"
+                              "Check the Prism Launcher updater log at: \n"
+                              "%2\n"
+                              "for details.")
+                               .arg(BuildConfig.printableVersionString())
+                               .arg(update_log_path);
+            auto msgBox = new QMessageBox(QMessageBox::Information, tr("Update Succeeded"), infoMsg, QMessageBox::Ok);
+            msgBox->setDefaultButton(QMessageBox::Ok);
+            msgBox->setDetailedText(FS::read(update_log_path));
+            msgBox->setAttribute(Qt::WA_DeleteOnClose);
+            msgBox->setMinimumWidth(460);
+            msgBox->adjustSize();
+            msgBox->open();
+            FS::deletePath(update_success_marker.absoluteFilePath());
+        }
+    }
+
+    // notify user if /tmp is mounted with `noexec` (#1693)
+    QString jvmArgs = m_settings->get("JvmArgs").toString();
+    if (jvmArgs.indexOf("java.io.tmpdir") == -1) { /* java.io.tmpdir is a valid workaround, so don't annoy */
+        bool is_tmp_noexec = false;
+
+#if defined(Q_OS_LINUX)
+
+        struct statvfs tmp_stat;
+        statvfs("/tmp", &tmp_stat);
+        is_tmp_noexec = tmp_stat.f_flag & ST_NOEXEC;
+
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_OPENBSD)
+
+        struct statfs tmp_stat;
+        statfs("/tmp", &tmp_stat);
+        is_tmp_noexec = tmp_stat.f_flags & MNT_NOEXEC;
+
+#endif
+
+        if (is_tmp_noexec) {
+            auto infoMsg =
+                tr("Your /tmp directory is currently mounted with the 'noexec' flag enabled.\n"
+                   "Some versions of Minecraft may not launch.\n"
+                   "\n"
+                   "You may solve this issue by remounting /tmp as 'exec' or setting "
+                   "the java.io.tmpdir JVM argument to a writeable directory in a "
+                   "filesystem where the 'exec' flag is set (e.g., /home/user/.local/tmp)\n");
+            auto msgBox = new QMessageBox(QMessageBox::Information, tr("Incompatible system configuration"), infoMsg, QMessageBox::Ok);
+            msgBox->setDefaultButton(QMessageBox::Ok);
+            msgBox->setAttribute(Qt::WA_DeleteOnClose);
+            msgBox->setMinimumWidth(460);
+            msgBox->adjustSize();
+            msgBox->open();
+        }
+    }
+
+    if (qgetenv("XDG_CURRENT_DESKTOP") == "gamescope") {
+        installEventFilter(new ToolTipFilter);
+    }
+
+    if (createSetupWizard()) {
+        return;
+    }
+
+    m_themeManager->applyCurrentlySelectedTheme(true);
+    performMainStartupAction();
+}
+
+bool Application::createSetupWizard()
+{
+    bool javaRequired = [this]() {
+        if (BuildConfig.JAVA_DOWNLOADER_ENABLED && settings()->get("AutomaticJavaDownload").toBool()) {
+            return false;
+        }
+        bool ignoreJavaWizard = settings()->get("IgnoreJavaWizard").toBool();
+        if (ignoreJavaWizard) {
+            return false;
+        }
+        QString currentHostName = QHostInfo::localHostName();
+        QString oldHostName = settings()->get("LastHostname").toString();
+        if (currentHostName != oldHostName) {
+            settings()->set("LastHostname", currentHostName);
+            return true;
+        }
+        QString currentJavaPath = settings()->get("JavaPath").toString();
+        QString actualPath = FS::ResolveExecutable(currentJavaPath);
+        return actualPath.isNull();
+    }();
+    bool askjava = BuildConfig.JAVA_DOWNLOADER_ENABLED && !javaRequired && !settings()->get("AutomaticJavaDownload").toBool() &&
+                   !settings()->get("AutomaticJavaSwitch").toBool() && !settings()->get("UserAskedAboutAutomaticJavaDownload").toBool();
+    bool languageRequired = settings()->get("Language").toString().isEmpty();
+    bool pasteInterventionRequired = settings()->get("PastebinURL") != "";
+    bool validWidgets = m_themeManager->isValidApplicationTheme(settings()->get("ApplicationTheme").toString());
+    bool validIcons = m_themeManager->isValidIconTheme(settings()->get("IconTheme").toString());
+    bool login = !m_accounts->anyAccountIsValid() && capabilities() & Application::SupportsMSA;
+    bool themeInterventionRequired = !validWidgets || !validIcons;
+    bool wizardRequired = javaRequired || languageRequired || pasteInterventionRequired || themeInterventionRequired || askjava || login;
+    if (wizardRequired) {
+        // set default theme after going into theme wizard
+        if (!validIcons)
+            settings()->set("IconTheme", QString("pe_colored"));
+        if (!validWidgets) {
+#if defined(Q_OS_WIN32) && QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+            const QString style =
+                QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark ? QStringLiteral("dark") : QStringLiteral("bright");
+#else
+            const QString style = QStringLiteral("system");
+#endif
+
+            settings()->set("ApplicationTheme", style);
+        }
+
+        m_themeManager->applyCurrentlySelectedTheme(true);
+
+        m_setupWizard = new SetupWizard(nullptr);
+        if (languageRequired) {
+            m_setupWizard->addPage(new LanguageWizardPage(m_setupWizard));
+        }
+
+        if (javaRequired) {
+            m_setupWizard->addPage(new JavaWizardPage(m_setupWizard));
+        } else if (askjava) {
+            m_setupWizard->addPage(new AutoJavaWizardPage(m_setupWizard));
+        }
+
+        if (pasteInterventionRequired) {
+            m_setupWizard->addPage(new PasteWizardPage(m_setupWizard));
+        }
+
+        if (themeInterventionRequired) {
+            m_setupWizard->addPage(new ThemeWizardPage(m_setupWizard));
+        }
+
+        if (login) {
+            m_setupWizard->addPage(new LoginWizardPage(m_setupWizard));
+        }
+        connect(m_setupWizard, &QDialog::finished, this, &Application::setupWizardFinished);
+        m_setupWizard->show();
+    }
+
+    return wizardRequired || login;
+}
+
+bool Application::updaterEnabled()
+{
+#if defined(Q_OS_MAC)
+    return BuildConfig.UPDATER_ENABLED;
+#else
+    return BuildConfig.UPDATER_ENABLED && QFileInfo(FS::PathCombine(m_rootPath, updaterBinaryName())).isFile();
+#endif
+}
+
+QString Application::updaterBinaryName()
+{
+    auto exe_name = QStringLiteral("%1_updater").arg(BuildConfig.LAUNCHER_APP_BINARY_NAME);
+#if defined Q_OS_WIN32
+    exe_name.append(".exe");
+#else
+    exe_name.prepend("bin/");
+#endif
+    return exe_name;
+}
+
+bool Application::event(QEvent* event)
+{
+#ifdef Q_OS_MACOS
+    if (event->type() == QEvent::ApplicationStateChange) {
+        auto ev = static_cast<QApplicationStateChangeEvent*>(event);
+
+        if (m_prevAppState == Qt::ApplicationActive && ev->applicationState() == Qt::ApplicationActive) {
+            emit clickedOnDock();
+        }
+        m_prevAppState = ev->applicationState();
+    }
+#endif
+
+    if (event->type() == QEvent::FileOpen) {
+        if (!m_mainWindow) {
+            showMainWindow(false);
+        }
+        auto ev = static_cast<QFileOpenEvent*>(event);
+        m_mainWindow->processURLs({ ev->url() });
+    }
+
+    return QApplication::event(event);
+}
+
+void Application::setupWizardFinished(int status)
+{
+    qDebug() << "Wizard result =" << status;
+    performMainStartupAction();
+}
+
+void Application::performMainStartupAction()
+{
+    m_status = Application::Initialized;
+    if (!m_instanceIdToLaunch.isEmpty()) {
+        auto inst = instances()->getInstanceById(m_instanceIdToLaunch);
+        if (inst) {
+            MinecraftTarget::Ptr targetToJoin = nullptr;
+            MinecraftAccountPtr accountToUse = nullptr;
+
+            qDebug() << "<> Instance" << m_instanceIdToLaunch << "launching";
+            if (!m_serverToJoin.isEmpty()) {
+                // FIXME: validate the server string
+                targetToJoin.reset(new MinecraftTarget(MinecraftTarget::parse(m_serverToJoin, false)));
+                qDebug() << "   Launching with server" << m_serverToJoin;
+            } else if (!m_worldToJoin.isEmpty()) {
+                targetToJoin.reset(new MinecraftTarget(MinecraftTarget::parse(m_worldToJoin, true)));
+                qDebug() << "   Launching with world" << m_worldToJoin;
+            }
+
+            if (!m_profileToUse.isEmpty()) {
+                accountToUse = accounts()->getAccountByProfileName(m_profileToUse);
+                if (!accountToUse) {
+                    return;
+                }
+                qDebug() << "   Launching with account" << m_profileToUse;
+            }
+
+            launch(inst, !m_offline, false, targetToJoin, accountToUse, m_offlineName);
+            return;
+        }
+    }
+    if (!m_instanceIdToShowWindowOf.isEmpty()) {
+        auto inst = instances()->getInstanceById(m_instanceIdToShowWindowOf);
+        if (inst) {
+            qDebug() << "<> Showing window of instance " << m_instanceIdToShowWindowOf;
+            showInstanceWindow(inst);
+            return;
+        }
+    }
+    if (!m_mainWindow) {
+        // normal main window
+        showMainWindow(false);
+        qDebug() << "<> Main window shown.";
+    }
+
+    // initialize the updater
+    if (updaterEnabled()) {
+        qDebug() << "Initializing updater";
+#ifdef Q_OS_MAC
+#if defined(SPARKLE_ENABLED)
+        m_updater.reset(new MacSparkleUpdater());
+#endif
+#else
+        m_updater.reset(new PrismExternalUpdater(m_mainWindow, m_rootPath, m_dataPath));
+#endif
+        qDebug() << "<> Updater started.";
+    }
+
+    {  // delete instances tmp dirctory
+        auto instDir = m_settings->get("InstanceDir").toString();
+        const QString tempRoot = FS::PathCombine(instDir, ".tmp");
+        FS::deletePath(tempRoot);
+    }
+
+    if (!m_urlsToImport.isEmpty()) {
+        qDebug() << "<> Importing from url:" << m_urlsToImport;
+        m_mainWindow->processURLs(m_urlsToImport);
+    }
+}
+
+void Application::showFatalErrorMessage(const QString& title, const QString& content)
+{
+    m_status = Application::Failed;
+    auto dialog = CustomMessageBox::selectable(nullptr, title, content, QMessageBox::Critical);
+    dialog->exec();
+}
+
+Application::~Application()
+{
+    // Shut down logger by setting the logger function to nothing
+    qInstallMessageHandler(nullptr);
+}
+
+void Application::messageReceived(const QByteArray& message)
+{
+    ApplicationMessage received;
+    received.parse(message);
+
+    auto& command = received.command;
+
+    if (status() != Initialized) {
+        bool isLoginAtempt = false;
+        if (command == "import") {
+            QString url = received.args["url"];
+            isLoginAtempt = !url.isEmpty() && normalizeImportUrl(url).scheme() == BuildConfig.LAUNCHER_APP_BINARY_NAME;
+        }
+        if (!isLoginAtempt) {
+            qDebug() << "Received message" << message << "while still initializing. It will be ignored.";
+            return;
+        }
+    }
+
+    if (command == "activate") {
+        showMainWindow();
+    } else if (command == "import") {
+        QString url = received.args["url"];
+        if (url.isEmpty()) {
+            qWarning() << "Received" << command << "message without a zip path/URL.";
+            return;
+        }
+        if (!m_mainWindow) {
+            showMainWindow(false);
+        }
+        m_mainWindow->processURLs({ normalizeImportUrl(url) });
+    } else if (command == "launch") {
+        QString id = received.args["id"];
+        QString server = received.args["server"];
+        QString world = received.args["world"];
+        QString profile = received.args["profile"];
+        bool offline = received.args["offline_enabled"] == "true";
+        QString offlineName = received.args["offline_name"];
+
+        BaseInstance* instance;
+        if (!id.isEmpty()) {
+            instance = instances()->getInstanceById(id);
+            if (!instance) {
+                qWarning() << "Launch command requires an valid instance ID. " << id << "resolves to nothing.";
+                return;
+            }
+        } else {
+            qWarning() << "Launch command called without an instance ID...";
+            return;
+        }
+
+        MinecraftTarget::Ptr serverObject = nullptr;
+        if (!server.isEmpty()) {
+            serverObject = std::make_shared<MinecraftTarget>(MinecraftTarget::parse(server, false));
+        } else if (!world.isEmpty()) {
+            serverObject = std::make_shared<MinecraftTarget>(MinecraftTarget::parse(world, true));
+        }
+        MinecraftAccountPtr accountObject;
+        if (!profile.isEmpty()) {
+            accountObject = accounts()->getAccountByProfileName(profile);
+            if (!accountObject) {
+                qWarning() << "Launch command requires the specified profile to be valid. " << profile
+                           << "does not resolve to any account.";
+                return;
+            }
+        }
+
+        launch(instance, !offline, false, serverObject, accountObject, offlineName);
+    } else {
+        qWarning() << "Received invalid message" << message;
+    }
+}
+
+TranslationsModel* Application::translations()
+{
+    return m_translations.get();
+}
+
+JavaInstallList* Application::javalist()
+{
+    if (!m_javalist) {
+        m_javalist.reset(new JavaInstallList());
+    }
+    return m_javalist.get();
+}
+
+QIcon Application::logo()
+{
+    return QIcon(":/" + BuildConfig.LAUNCHER_SVGFILENAME);
+}
+
+bool Application::openJsonEditor(const QString& filename)
+{
+    const QString file = QDir::current().absoluteFilePath(filename);
+    if (m_settings->get("JsonEditor").toString().isEmpty()) {
+        return DesktopServices::openUrl(QUrl::fromLocalFile(file));
+    } else {
+        // return DesktopServices::openFile(m_settings->get("JsonEditor").toString(), file);
+        return DesktopServices::run(m_settings->get("JsonEditor").toString(), { file });
+    }
+}
+
+bool Application::launch(BaseInstance* instance,
+                         bool online,
+                         bool demo,
+                         MinecraftTarget::Ptr targetToJoin,
+                         MinecraftAccountPtr accountToUse,
+                         const QString& offlineName)
+{
+    if (m_updateRunning) {
+        qDebug() << "Cannot launch instances while an update is running. Please try again when updates are completed.";
+    } else if (instance->canLaunch()) {
+        QMutexLocker locker(&m_instanceExtrasMutex);
+        auto& extras = m_instanceExtras[instance->id()];
+        auto window = extras.window;
+        if (window) {
+            if (!window->saveAll()) {
+                return false;
+            }
+        }
+        auto& controller = extras.controller;
+        controller.reset(new LaunchController());
+        controller->setInstance(instance);
+        controller->setOnline(online);
+        controller->setDemo(demo);
+        controller->setProfiler(profilers().value(instance->settings()->get("Profiler").toString(), nullptr).get());
+        controller->setTargetToJoin(targetToJoin);
+        controller->setAccountToUse(accountToUse);
+        controller->setOfflineName(offlineName);
+        if (window) {
+            controller->setParentWidget(window);
+        } else if (m_mainWindow) {
+            controller->setParentWidget(m_mainWindow);
+        }
+        connect(controller.get(), &LaunchController::finished, this, &Application::controllerFinished);
+        addRunningInstance();
+        QMetaObject::invokeMethod(controller.get(), &Task::start, Qt::QueuedConnection);
+        return true;
+    } else if (instance->isRunning()) {
+        showInstanceWindow(instance, "console");
+        return true;
+    } else if (instance->canEdit()) {
+        showInstanceWindow(instance);
+        return true;
+    }
+    return false;
+}
+
+bool Application::kill(BaseInstance* instance)
+{
+    if (!instance->isRunning()) {
+        qWarning() << "Attempted to kill instance" << instance->id() << ", which isn't running.";
+        return false;
+    }
+    QMutexLocker locker(&m_instanceExtrasMutex);
+    auto& extras = m_instanceExtras[instance->id()];
+    // NOTE: copy of the shared pointer keeps it alive
+    auto& controller = extras.controller;
+    locker.unlock();
+    if (controller) {
+        return controller->abort();
+    }
+    return true;
+}
+
+void Application::closeCurrentWindow()
+{
+    if (focusWindow())
+        focusWindow()->close();
+}
+
+void Application::addRunningInstance()
+{
+    m_runningInstances++;
+    if (m_runningInstances == 1) {
+        emit updateAllowedChanged(false);
+    }
+}
+
+void Application::subRunningInstance()
+{
+    if (m_runningInstances == 0) {
+        qCritical() << "Something went really wrong and we now have less than 0 running instances... WTF";
+        return;
+    }
+    m_runningInstances--;
+    if (m_runningInstances == 0) {
+        emit updateAllowedChanged(true);
+    }
+}
+
+bool Application::shouldExitNow() const
+{
+    return m_runningInstances == 0 && m_openWindows == 0;
+}
+
+bool Application::updatesAreAllowed()
+{
+    return m_runningInstances == 0;
+}
+
+void Application::updateIsRunning(bool running)
+{
+    m_updateRunning = running;
+}
+
+void Application::controllerFinished()
+{
+    auto controller = qobject_cast<LaunchController*>(sender());
+    if (!controller)
+        return;
+    auto id = controller->id();
+
+    QMutexLocker locker(&m_instanceExtrasMutex);
+    auto& extras = m_instanceExtras.at(id);
+
+    const bool wasSuccessful = controller->wasSuccessful();
+    // on success, do...
+    if (wasSuccessful && controller->instance()->settings()->get("AutoCloseConsole").toBool()) {
+        if (extras.window) {
+            QMetaObject::invokeMethod(extras.window, &QWidget::close, Qt::QueuedConnection);
+        }
+    }
+    extras.controller.reset();
+    subRunningInstance();
+
+    // quit when there are no more windows.
+    if (shouldExitNow()) {
+        m_status = wasSuccessful ? Succeeded : Failed;
+        exit(wasSuccessful ? 0 : 1);
+    }
+}
+
+void Application::ShowGlobalSettings(class QWidget* parent, QString open_page)
+{
+    if (!m_globalSettingsProvider) {
+        return;
+    }
+    emit globalSettingsAboutToOpen();
+    {
+        SettingsObject::Lock lock(APPLICATION->settings());
+        PageDialog dlg(m_globalSettingsProvider.get(), open_page, parent);
+        connect(&dlg, &PageDialog::applied, this, &Application::globalSettingsApplied);
+        dlg.exec();
+    }
+}
+
+MainWindow* Application::showMainWindow(bool minimized)
+{
+    if (m_mainWindow) {
+        m_mainWindow->setWindowState(m_mainWindow->windowState() & ~Qt::WindowMinimized);
+        m_mainWindow->raise();
+        m_mainWindow->activateWindow();
+    } else {
+        m_mainWindow = new MainWindow();
+        m_mainWindow->restoreState(QByteArray::fromBase64(APPLICATION->settings()->get("MainWindowState").toString().toUtf8()));
+        m_mainWindow->restoreGeometry(QByteArray::fromBase64(APPLICATION->settings()->get("MainWindowGeometry").toString().toUtf8()));
+
+        if (minimized) {
+            m_mainWindow->showMinimized();
+        } else {
+            m_mainWindow->show();
+        }
+
+        m_mainWindow->checkInstancePathForProblems();
+        connect(this, &Application::updateAllowedChanged, m_mainWindow, &MainWindow::updatesAllowedChanged);
+        connect(m_mainWindow, &MainWindow::isClosing, this, &Application::on_windowClose);
+        m_openWindows++;
+    }
+    return m_mainWindow;
+}
+
+ViewLogWindow* Application::showLogWindow()
+{
+    if (m_viewLogWindow) {
+        m_viewLogWindow->setWindowState(m_viewLogWindow->windowState() & ~Qt::WindowMinimized);
+        m_viewLogWindow->raise();
+        m_viewLogWindow->activateWindow();
+    } else {
+        m_viewLogWindow = new ViewLogWindow();
+        connect(m_viewLogWindow, &ViewLogWindow::isClosing, this, &Application::on_windowClose);
+        m_openWindows++;
+    }
+    return m_viewLogWindow;
+}
+
+InstanceWindow* Application::showInstanceWindow(BaseInstance* instance, QString page)
+{
+    if (!instance)
+        return nullptr;
+    auto id = instance->id();
+    QMutexLocker locker(&m_instanceExtrasMutex);
+    auto& extras = m_instanceExtras[id];
+    auto& window = extras.window;
+
+    if (window) {
+// If the window is minimized on macOS or Windows, activate and bring it up
+#ifdef Q_OS_MACOS
+        if (window->isMinimized()) {
+            window->setWindowState(window->windowState() & ~Qt::WindowMinimized);
+        }
+#elif defined(Q_OS_WIN)
+        if (window->isMinimized()) {
+            window->showNormal();
+        }
+#endif
+
+        window->raise();
+        window->activateWindow();
+    } else {
+        window = new InstanceWindow(instance);
+        m_openWindows++;
+        connect(window, &InstanceWindow::isClosing, this, &Application::on_windowClose);
+    }
+
+    if (!page.isEmpty()) {
+        window->selectPage(page);
+    }
+    if (extras.controller) {
+        extras.controller->setParentWidget(window);
+    }
+    return window;
+}
+
+void Application::on_windowClose()
+{
+    m_openWindows--;
+    auto instWindow = qobject_cast<InstanceWindow*>(sender());
+    if (instWindow) {
+        QMutexLocker locker(&m_instanceExtrasMutex);
+        auto& extras = m_instanceExtras[instWindow->instanceId()];
+        extras.window = nullptr;
+        if (extras.controller) {
+            extras.controller->setParentWidget(m_mainWindow);
+        }
+    }
+    auto mainWindow = qobject_cast<MainWindow*>(sender());
+    if (mainWindow) {
+        m_mainWindow = nullptr;
+    }
+    auto logWindow = qobject_cast<ViewLogWindow*>(sender());
+    if (logWindow) {
+        m_viewLogWindow = nullptr;
+    }
+    // quit when there are no more windows.
+    if (shouldExitNow()) {
+        exit(0);
+    }
+}
+
+void Application::updateProxySettings(QString proxyTypeStr, QString addr, int port, QString user, QString password)
+{
+    // Set the application proxy settings.
+    if (proxyTypeStr == "SOCKS5") {
+        QNetworkProxy::setApplicationProxy(QNetworkProxy(QNetworkProxy::Socks5Proxy, addr, port, user, password));
+    } else if (proxyTypeStr == "HTTP") {
+        QNetworkProxy::setApplicationProxy(QNetworkProxy(QNetworkProxy::HttpProxy, addr, port, user, password));
+    } else if (proxyTypeStr == "None") {
+        // If we have no proxy set, set no proxy and return.
+        QNetworkProxy::setApplicationProxy(QNetworkProxy(QNetworkProxy::NoProxy));
+    } else {
+        // If we have "Default" selected, set Qt to use the system proxy settings.
+        QNetworkProxyFactory::setUseSystemConfiguration(true);
+    }
+
+    qDebug() << "Detecting proxy settings...";
+    QNetworkProxy proxy = QNetworkProxy::applicationProxy();
+    m_network->setProxy(proxy);
+
+    QString proxyDesc;
+    if (proxy.type() == QNetworkProxy::NoProxy) {
+        qDebug() << "Using no proxy is an option!";
+        return;
+    }
+    switch (proxy.type()) {
+        case QNetworkProxy::DefaultProxy:
+            proxyDesc = "Default proxy: ";
+            break;
+        case QNetworkProxy::Socks5Proxy:
+            proxyDesc = "Socks5 proxy: ";
+            break;
+        case QNetworkProxy::HttpProxy:
+            proxyDesc = "HTTP proxy: ";
+            break;
+        case QNetworkProxy::HttpCachingProxy:
+            proxyDesc = "HTTP caching: ";
+            break;
+        case QNetworkProxy::FtpCachingProxy:
+            proxyDesc = "FTP caching: ";
+            break;
+        default:
+            proxyDesc = "DERP proxy: ";
+            break;
+    }
+    proxyDesc += QString("%1:%2").arg(proxy.hostName()).arg(proxy.port());
+    qDebug() << proxyDesc;
+}
+
+HttpMetaCache* Application::metacache()
+{
+    return m_metacache.get();
+}
+
+QNetworkAccessManager* Application::network()
+{
+    return m_network.get();
+}
+
+Meta::Index* Application::metadataIndex()
+{
+    if (!m_metadataIndex) {
+        m_metadataIndex.reset(new Meta::Index());
+    }
+    return m_metadataIndex.get();
+}
+
+void Application::updateCapabilities()
+{
+    m_capabilities = None;
+    if (!getMSAClientID().isEmpty())
+        m_capabilities |= SupportsMSA;
+    if (!getFlameAPIKey().isEmpty())
+        m_capabilities |= SupportsFlame;
+
+#ifdef Q_OS_LINUX
+    if (gamemode_query_status() >= 0)
+        m_capabilities |= SupportsGameMode;
+
+    if (!MangoHud::getLibraryString().isEmpty())
+        m_capabilities |= SupportsMangoHud;
+#endif
+}
+
+void Application::detectLibraries()
+{
+#ifdef Q_OS_LINUX
+    m_detectedGLFWPath = MangoHud::findLibrary(BuildConfig.GLFW_LIBRARY_NAME);
+    m_detectedOpenALPath = MangoHud::findLibrary(BuildConfig.OPENAL_LIBRARY_NAME);
+    qDebug() << "Detected native libraries:" << m_detectedGLFWPath << m_detectedOpenALPath;
+#endif
+}
+
+QString Application::getJarPath(QString jarFile)
+{
+    QStringList potentialPaths = {
+#if defined(Q_OS_LINUX) || defined(Q_OS_FREEBSD) || defined(Q_OS_OPENBSD)
+        FS::PathCombine(m_rootPath, "share", BuildConfig.LAUNCHER_NAME),
+#endif
+        FS::PathCombine(m_rootPath, "jars"), FS::PathCombine(applicationDirPath(), "jars"),
+        FS::PathCombine(applicationDirPath(), "..", "jars")  // from inside build dir, for debuging
+    };
+    for (QString p : potentialPaths) {
+        QString jarPath = FS::PathCombine(p, jarFile);
+        if (QFileInfo(jarPath).isFile())
+            return jarPath;
+    }
+    return {};
+}
+
+QString Application::getMSAClientID()
+{
+    QString clientIDOverride = m_settings->get("MSAClientIDOverride").toString();
+    if (!clientIDOverride.isEmpty()) {
+        return clientIDOverride;
+    }
+
+    return BuildConfig.MSA_CLIENT_ID;
+}
+
+QString Application::getFlameAPIKey()
+{
+    QString keyOverride = m_settings->get("FlameKeyOverride").toString();
+    if (!keyOverride.isEmpty()) {
+        return keyOverride;
+    }
+
+    return BuildConfig.FLAME_API_KEY;
+}
+
+QString Application::getModrinthAPIToken()
+{
+    QString tokenOverride = m_settings->get("ModrinthToken").toString();
+    if (!tokenOverride.isEmpty())
+        return tokenOverride;
+
+    return QString();
+}
+
+QString Application::getUserAgent()
+{
+    QString uaOverride = m_settings->get("UserAgentOverride").toString();
+    if (!uaOverride.isEmpty()) {
+        return uaOverride.replace("$LAUNCHER_VER", BuildConfig.printableVersionString());
+    }
+
+    return BuildConfig.USER_AGENT;
+}
+
+bool Application::handleDataMigration(const QString& currentData,
+                                      const QString& oldData,
+                                      const QString& name,
+                                      const QString& configFile) const
+{
+    QString nomigratePath = FS::PathCombine(currentData, name + "_nomigrate.txt");
+    QStringList configPaths = { FS::PathCombine(oldData, configFile), FS::PathCombine(oldData, BuildConfig.LAUNCHER_CONFIGFILE) };
+
+    QLocale locale;
+
+    // Is there a valid config at the old location?
+    bool configExists = false;
+    for (QString configPath : configPaths) {
+        configExists |= QFileInfo::exists(configPath);
+    }
+
+    if (!configExists || QFileInfo::exists(nomigratePath)) {
+        qDebug() << "<> No migration needed from" << name;
+        return false;
+    }
+
+    QString message;
+    bool currentExists = QFileInfo::exists(FS::PathCombine(currentData, BuildConfig.LAUNCHER_CONFIGFILE));
+
+    if (currentExists) {
+        message = tr("Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do "
+                     "you want to be reminded of the pending data migration next time you start %2?")
+                      .arg(name, BuildConfig.LAUNCHER_DISPLAYNAME);
+    } else {
+        message = tr("It looks like you used %1 before. Do you want to migrate your data to the new location of %2?")
+                      .arg(name, BuildConfig.LAUNCHER_DISPLAYNAME);
+
+        QFileInfo logInfo(FS::PathCombine(oldData, name + "-0.log"));
+        if (logInfo.exists()) {
+            QString lastModified = logInfo.lastModified().toString(locale.dateFormat());
+            message = tr("It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?")
+                          .arg(name, lastModified, BuildConfig.LAUNCHER_DISPLAYNAME);
+        }
+    }
+
+    QMessageBox::StandardButton askMoveDialogue =
+        QMessageBox::question(nullptr, BuildConfig.LAUNCHER_DISPLAYNAME, message, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+
+    auto setDoNotMigrate = [&nomigratePath] {
+        QFile file(nomigratePath);
+        if (!file.open(QIODevice::WriteOnly)) {
+            qWarning() << "setDoNotMigrate failed; Failed to open file '" << file.fileName() << "' for writing!";
+        }
+    };
+
+    // create no-migrate file if user doesn't want to migrate
+    if (askMoveDialogue != QMessageBox::Yes) {
+        qDebug() << "<> Migration declined for" << name;
+        setDoNotMigrate();
+        return currentExists;  // cancel further migrations, if we already have a data directory
+    }
+
+    if (!currentExists) {
+        // Migrate!
+        using namespace Filters;
+
+        QList<Filter> filters;
+        filters.append(equals(configFile));
+        filters.append(equals(BuildConfig.LAUNCHER_CONFIGFILE));  // it's possible that we already used that directory before
+        filters.append(startsWith("logs/"));
+        filters.append(equals("accounts.json"));
+        filters.append(startsWith("accounts/"));
+        filters.append(startsWith("assets/"));
+        filters.append(startsWith("icons/"));
+        filters.append(startsWith("instances/"));
+        filters.append(startsWith("libraries/"));
+        filters.append(startsWith("mods/"));
+        filters.append(startsWith("themes/"));
+
+        ProgressDialog diag;
+        DataMigrationTask task(oldData, currentData, any(std::move(filters)));
+        if (diag.execWithTask(&task)) {
+            qDebug() << "<> Migration succeeded";
+            setDoNotMigrate();
+        } else {
+            QString reason = task.failReason();
+            QMessageBox::critical(nullptr, BuildConfig.LAUNCHER_DISPLAYNAME, tr("Migration failed! Reason: %1").arg(reason));
+        }
+    } else {
+        qWarning() << "<> Migration was skipped, due to existing data";
+    }
+    return true;
+}
+
+void Application::triggerUpdateCheck()
+{
+    if (m_updater) {
+        qDebug() << "Checking for updates.";
+        m_updater->setBetaAllowed(false);  // There are no other channels than stable
+        m_updater->checkForUpdates();
+    } else {
+        qDebug() << "Updater not available.";
+    }
+}
+
+QUrl Application::normalizeImportUrl(QString const& url)
+{
+    auto local_file = QFileInfo(url);
+    if (local_file.exists()) {
+        return QUrl::fromLocalFile(local_file.absoluteFilePath());
+    } else {
+        return QUrl::fromUserInput(url);
+    }
+}
+
+const QString Application::javaPath()
+{
+    return m_settings->get("JavaDir").toString();
+}
+
+void Application::addQSavePath(QString path)
+{
+    QMutexLocker locker(&m_qsaveResourcesMutex);
+    m_qsaveResources[path] = m_qsaveResources.value(path, 0) + 1;
+}
+
+void Application::removeQSavePath(QString path)
+{
+    QMutexLocker locker(&m_qsaveResourcesMutex);
+    auto count = m_qsaveResources.value(path, 0) - 1;
+    if (count <= 0) {
+        m_qsaveResources.remove(path);
+    } else {
+        m_qsaveResources[path] = count;
+    }
+}
+
+bool Application::checkQSavePath(QString path)
+{
+    QMutexLocker locker(&m_qsaveResourcesMutex);
+    for (auto partialPath : m_qsaveResources.keys()) {
+        if (path.startsWith(partialPath) && m_qsaveResources.value(partialPath, 0) > 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+===== END launcher/Application.cpp =====
+
+===== BEGIN launcher/Application.h =====
+// SPDX-License-Identifier: GPL-3.0-only
+/*
+ *  Prism Launcher - Minecraft Launcher
+ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
+ *  Copyright (C) 2022 Tayou <git@tayou.org>
+ *  Copyright (C) 2023 TheKodeToad <TheKodeToad@proton.me>
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * This file incorporates work covered by the following copyright and
+ * permission notice:
+ *
+ *      Copyright 2013-2021 MultiMC Contributors
+ *
+ *      Licensed under the Apache License, Version 2.0 (the "License");
+ *      you may not use this file except in compliance with the License.
+ *      You may obtain a copy of the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *      Unless required by applicable law or agreed to in writing, software
+ *      distributed under the License is distributed on an "AS IS" BASIS,
+ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *      See the License for the specific language governing permissions and
+ *      limitations under the License.
+ */
+
+#pragma once
+
+#include <memory>
+
+#include <QApplication>
+#include <QDateTime>
+#include <QDebug>
+#include <QFlag>
+#include <QIcon>
+#include <QMutex>
+#include <QUrl>
+
+#include "QObjectPtr.h"
+
+#include "minecraft/auth/MinecraftAccount.h"
+
+class LaunchController;
+class LocalPeer;
+class InstanceWindow;
+class MainWindow;
+class ViewLogWindow;
+class SetupWizard;
+class GenericPageProvider;
+class QFile;
+class HttpMetaCache;
+class SettingsObject;
+class InstanceList;
+class AccountList;
+class IconList;
+class QNetworkAccessManager;
+class JavaInstallList;
+class ExternalUpdater;
+class BaseProfilerFactory;
+class BaseDetachedToolFactory;
+class TranslationsModel;
+class ITheme;
+class MCEditTool;
+class ThemeManager;
+class IconTheme;
+class BaseInstance;
+
+class LogModel;
+
+struct MinecraftTarget;
+class MinecraftAccount;
+
+namespace Meta {
+class Index;
+}
+
+#if defined(APPLICATION)
+#undef APPLICATION
+#endif
+#define APPLICATION (static_cast<Application*>(QCoreApplication::instance()))
+
+// Used for checking if is a test
+#if defined(APPLICATION_DYN)
+#undef APPLICATION_DYN
+#endif
+#define APPLICATION_DYN (dynamic_cast<Application*>(QCoreApplication::instance()))
+
+class Application : public QApplication {
+    // friends for the purpose of limiting access to deprecated stuff
+    Q_OBJECT
+   public:
+    enum Status { StartingUp, Failed, Succeeded, Initialized };
+
+    enum Capability {
+        None = 0,
+
+        SupportsMSA = 1 << 0,
+        SupportsFlame = 1 << 1,
+        SupportsGameMode = 1 << 2,
+        SupportsMangoHud = 1 << 3,
+    };
+    Q_DECLARE_FLAGS(Capabilities, Capability)
+
+   public:
+    Application(int& argc, char** argv);
+    virtual ~Application();
+
+    bool event(QEvent* event) override;
+
+    SettingsObject* settings() const { return m_settings.get(); }
+
+    qint64 timeSinceStart() const { return m_startTime.msecsTo(QDateTime::currentDateTime()); }
+
+    QIcon logo();
+
+    ThemeManager* themeManager() { return m_themeManager.get(); }
+
+    ExternalUpdater* updater() { return m_updater.get(); }
+
+    void triggerUpdateCheck();
+
+    TranslationsModel* translations();
+
+    JavaInstallList* javalist();
+
+    InstanceList* instances() const { return m_instances.get(); }
+
+    IconList* icons() const { return m_icons.get(); }
+
+    MCEditTool* mcedit() const { return m_mcedit.get(); }
+
+    AccountList* accounts() const { return m_accounts.get(); }
+
+    Status status() const { return m_status; }
+
+    const QMap<QString, std::shared_ptr<BaseProfilerFactory>>& profilers() const { return m_profilers; }
+
+    void updateProxySettings(QString proxyTypeStr, QString addr, int port, QString user, QString password);
+
+    QNetworkAccessManager* network();
+
+    HttpMetaCache* metacache();
+
+    Meta::Index* metadataIndex();
+
+    void updateCapabilities();
+
+    void detectLibraries();
+
+    /*!
+     * Finds and returns the full path to a jar file.
+     * Returns a null-string if it could not be found.
+     */
+    QString getJarPath(QString jarFile);
+
+    QString getMSAClientID();
+    QString getFlameAPIKey();
+    QString getModrinthAPIToken();
+    QString getUserAgent();
+
+    /// this is the root of the 'installation'. Used for automatic updates
+    const QString& root() { return m_rootPath; }
+
+    /// the data path the application is using
+    const QString& dataRoot() { return m_dataPath; }
+
+    /// the java installed path the application is using
+    const QString javaPath();
+
+    bool isPortable() { return m_portable; }
+
+    const Capabilities capabilities() { return m_capabilities; }
+
+    /*!
+     * Opens a json file using either a system default editor, or, if not empty, the editor
+     * specified in the settings
+     */
+    bool openJsonEditor(const QString& filename);
+
+    InstanceWindow* showInstanceWindow(BaseInstance* instance, QString page = QString());
+    MainWindow* showMainWindow(bool minimized = false);
+    ViewLogWindow* showLogWindow();
+
+    void updateIsRunning(bool running);
+    bool updatesAreAllowed();
+
+    void ShowGlobalSettings(class QWidget* parent, QString open_page = QString());
+
+    bool updaterEnabled();
+    QString updaterBinaryName();
+
+    QUrl normalizeImportUrl(QString const& url);
+
+   signals:
+    void updateAllowedChanged(bool status);
+    void globalSettingsAboutToOpen();
+    void globalSettingsApplied();
+    int currentCatChanged(int index);
+
+    void oauthReplyRecieved(QVariantMap);
+
+#ifdef Q_OS_MACOS
+    void clickedOnDock();
+#endif
+
+   public slots:
+    bool launch(BaseInstance* instance,
+                bool online = true,
+                bool demo = false,
+                std::shared_ptr<MinecraftTarget> targetToJoin = nullptr,
+                shared_qobject_ptr<MinecraftAccount> accountToUse = nullptr,
+                const QString& offlineName = QString());
+    bool kill(BaseInstance* instance);
+    void closeCurrentWindow();
+
+   private slots:
+    void on_windowClose();
+    void messageReceived(const QByteArray& message);
+    void controllerFinished();
+    void setupWizardFinished(int status);
+
+   private:
+    bool handleDataMigration(const QString& currentData, const QString& oldData, const QString& name, const QString& configFile) const;
+    bool createSetupWizard();
+    void performMainStartupAction();
+
+    // sets the fatal error message and m_status to Failed.
+    void showFatalErrorMessage(const QString& title, const QString& content);
+
+   private:
+    void addRunningInstance();
+    void subRunningInstance();
+    bool shouldExitNow() const;
+
+   private:
+    QHash<QString, int> m_qsaveResources;
+    mutable QMutex m_qsaveResourcesMutex;
+
+   private:
+    QDateTime m_startTime;
+
+    std::unique_ptr<QNetworkAccessManager> m_network;
+
+    std::unique_ptr<ExternalUpdater> m_updater;
+    std::unique_ptr<AccountList> m_accounts;
+
+    std::unique_ptr<HttpMetaCache> m_metacache;
+    std::unique_ptr<Meta::Index> m_metadataIndex;
+
+    std::unique_ptr<SettingsObject> m_settings;
+    std::unique_ptr<InstanceList> m_instances;
+    std::unique_ptr<IconList> m_icons;
+    std::unique_ptr<JavaInstallList> m_javalist;
+    std::unique_ptr<TranslationsModel> m_translations;
+    std::unique_ptr<GenericPageProvider> m_globalSettingsProvider;
+    std::unique_ptr<MCEditTool> m_mcedit;
+    QSet<QString> m_features;
+    std::unique_ptr<ThemeManager> m_themeManager;
+
+    QMap<QString, std::shared_ptr<BaseProfilerFactory>> m_profilers;
+
+    QString m_rootPath;
+    QString m_dataPath;
+    Status m_status = Application::StartingUp;
+    Capabilities m_capabilities;
+    bool m_portable = false;
+
+#ifdef Q_OS_MACOS
+    Qt::ApplicationState m_prevAppState = Qt::ApplicationInactive;
+#endif
+
+    // FIXME: attach to instances instead.
+    struct InstanceXtras {
+        InstanceWindow* window = nullptr;
+        std::unique_ptr<LaunchController> controller;
+    };
+    std::map<QString, InstanceXtras> m_instanceExtras;
+    mutable QMutex m_instanceExtrasMutex;
+
+    // main state variables
+    size_t m_openWindows = 0;
+    size_t m_runningInstances = 0;
+    bool m_updateRunning = false;
+
+    // main window, if any
+    MainWindow* m_mainWindow = nullptr;
+
+    // log window, if any
+    ViewLogWindow* m_viewLogWindow = nullptr;
+
+    // peer launcher instance connector - used to implement single instance launcher and signalling
+    LocalPeer* m_peerInstance = nullptr;
+
+    SetupWizard* m_setupWizard = nullptr;
+
+   public:
+    QString m_detectedGLFWPath;
+    QString m_detectedOpenALPath;
+    QString m_instanceIdToLaunch;
+    QString m_serverToJoin;
+    QString m_worldToJoin;
+    QString m_profileToUse;
+    bool m_offline = false;
+    QString m_offlineName;
+    bool m_liveCheck = false;
+    QList<QUrl> m_urlsToImport;
+    QString m_instanceIdToShowWindowOf;
+    std::unique_ptr<QFile> logFile;
+    std::unique_ptr<LogModel> logModel;
+
+   public:
+    void addQSavePath(QString);
+    void removeQSavePath(QString);
+    bool checkQSavePath(QString);
+};
+
+===== END launcher/Application.h =====
+
+===== BEGIN launcher/LaunchController.cpp =====
+// SPDX-License-Identifier: GPL-3.0-only
+/*
+ *  Prism Launcher - Minecraft Launcher
+ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
+ *  Copyright (C) 2023 TheKodeToad <TheKodeToad@proton.me>
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * This file incorporates work covered by the following copyright and
+ * permission notice:
+ *
+ *      Copyright 2013-2021 MultiMC Contributors
+ *
+ *      Licensed under the Apache License, Version 2.0 (the "License");
+ *      you may not use this file except in compliance with the License.
+ *      You may obtain a copy of the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *      Unless required by applicable law or agreed to in writing, software
+ *      distributed under the License is distributed on an "AS IS" BASIS,
+ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *      See the License for the specific language governing permissions and
+ *      limitations under the License.
+ */
+
+#include "LaunchController.h"
+#include "Application.h"
+#include "launch/steps/PrintServers.h"
+#include "minecraft/auth/AccountData.h"
+#include "minecraft/auth/AccountList.h"
+
+#include "ui/InstanceWindow.h"
+#include "ui/MainWindow.h"
+#include "ui/dialogs/CustomMessageBox.h"
+#include "ui/dialogs/MSALoginDialog.h"
+#include "ui/dialogs/ProfileSelectDialog.h"
+#include "ui/dialogs/ProfileSetupDialog.h"
+#include "ui/dialogs/ProgressDialog.h"
+
+#include <QHostAddress>
+#include <QHostInfo>
+#include <QInputDialog>
+#include <QLineEdit>
+#include <QList>
+#include <QPushButton>
+#include <QRegularExpression>
+#include <QStringList>
+
+#include "BuildConfig.h"
+#include "JavaCommon.h"
+#include "launch/steps/TextPrint.h"
+#include "tasks/Task.h"
+#include "ui/dialogs/ChooseOfflineNameDialog.h"
+
+LaunchController::LaunchController() : Task() {}
+
+void LaunchController::executeTask()
+{
+    if (!m_instance) {
+        emitFailed(tr("No instance specified!"));
+        return;
+    }
+
+    if (!JavaCommon::checkJVMArgs(m_instance->settings()->get("JvmArgs").toString(), m_parentWidget)) {
+        emitFailed(tr("Invalid Java arguments specified. Please fix this first."));
+        return;
+    }
+
+    login();
+}
+
+void LaunchController::decideAccount()
+{
+    if (m_accountToUse) {
+        return;
+    }
+
+    // Find an account to use.
+    auto accounts = APPLICATION->accounts();
+    if (accounts->count() <= 0 || !accounts->anyAccountIsValid()) {
+        // Tell the user they need to log in at least one account in order to play.
+        auto reply = CustomMessageBox::selectable(m_parentWidget, tr("No Accounts"),
+                                                  tr("In order to play Minecraft, you must have at least one Microsoft "
+                                                     "account which owns Minecraft logged in. "
+                                                     "Would you like to open the account manager to add an account now?"),
+                                                  QMessageBox::Information, QMessageBox::Yes | QMessageBox::No)
+                         ->exec();
+
+        if (reply == QMessageBox::Yes) {
+            // Open the account manager.
+            APPLICATION->ShowGlobalSettings(m_parentWidget, "accounts");
+        } else if (reply == QMessageBox::No) {
+            // Do not open "profile select" dialog.
+            return;
+        }
+    }
+
+    // Select the account to use. If the instance has a specific account set, that will be used. Otherwise, the default account will be used
+    auto instanceAccountId = m_instance->settings()->get("InstanceAccountId").toString();
+    auto instanceAccountIndex = accounts->findAccountByProfileId(instanceAccountId);
+    if (instanceAccountIndex == -1 || instanceAccountId.isEmpty()) {
+        m_accountToUse = accounts->defaultAccount();
+    } else {
+        m_accountToUse = accounts->at(instanceAccountIndex);
+    }
+
+    if (!m_accountToUse) {
+        // If no default account is set, ask the user which one to use.
+        ProfileSelectDialog selectDialog(tr("Which account would you like to use?"), ProfileSelectDialog::GlobalDefaultCheckbox,
+                                         m_parentWidget);
+
+        selectDialog.exec();
+
+        // Launch the instance with the selected account.
+        m_accountToUse = selectDialog.selectedAccount();
+
+        // If the user said to use the account as default, do that.
+        if (selectDialog.useAsGlobalDefault() && m_accountToUse) {
+            accounts->setDefaultAccount(m_accountToUse);
+        }
+    }
+}
+
+bool LaunchController::askPlayDemo()
+{
+    QMessageBox box(m_parentWidget);
+    box.setWindowTitle(tr("Play demo?"));
+    box.setText(
+        tr("This account does not own Minecraft.\nYou need to purchase the game first to play it.\n\nDo you want to play "
+           "the demo?"));
+    box.setIcon(QMessageBox::Warning);
+    auto demoButton = box.addButton(tr("Play Demo"), QMessageBox::ButtonRole::YesRole);
+    auto cancelButton = box.addButton(tr("Cancel"), QMessageBox::ButtonRole::NoRole);
+    box.setDefaultButton(cancelButton);
+
+    box.exec();
+    return box.clickedButton() == demoButton;
+}
+
+QString LaunchController::askOfflineName(QString playerName, bool demo, bool* ok)
+{
+    if (ok != nullptr) {
+        *ok = false;
+    }
+
+    // we ask the user for a player name
+    QString message = tr("Choose your offline mode player name.");
+    if (demo) {
+        message = tr("Choose your demo mode player name.");
+    }
+
+    QString lastOfflinePlayerName = APPLICATION->settings()->get("LastOfflinePlayerName").toString();
+    QString usedname = lastOfflinePlayerName.isEmpty() ? playerName : lastOfflinePlayerName;
+
+    ChooseOfflineNameDialog dialog(message, m_parentWidget);
+    dialog.setWindowTitle(tr("Player name"));
+    dialog.setUsername(usedname);
+    if (dialog.exec() != QDialog::Accepted) {
+        return {};
+    }
+
+    const QString name = dialog.getUsername();
+    usedname = name;
+    APPLICATION->settings()->set("LastOfflinePlayerName", usedname);
+
+    if (ok != nullptr) {
+        *ok = true;
+    }
+    return usedname;
+}
+
+void LaunchController::login()
+{
+    decideAccount();
+
+    if (!m_accountToUse) {
+        // if no account is selected, ask about demo
+        if (!m_demo) {
+            m_demo = askPlayDemo();
+        }
+        if (m_demo) {
+            // we ask the user for a player name
+            bool ok = false;
+            auto name = askOfflineName("Player", m_demo, &ok);
+            if (ok) {
+                m_session = std::make_shared<AuthSession>();
+                static const QRegularExpression s_removeChars("[{}-]");
+                m_session->MakeDemo(name, MinecraftAccount::uuidFromUsername(name).toString().remove(s_removeChars));
+                launchInstance();
+                return;
+            }
+        }
+        // if no account is selected, we bail
+        emitFailed(tr("No account selected for launch."));
+        return;
+    }
+
+    // we loop until the user succeeds in logging in or gives up
+    bool tryagain = true;
+    unsigned int tries = 0;
+
+    if ((m_accountToUse->accountType() != AccountType::Offline && m_accountToUse->accountState() == AccountState::Offline) ||
+        m_accountToUse->shouldRefresh()) {
+        // Force account refresh on the account used to launch the instance updating the AccountState
+        // only on first try and if it is not meant to be offline
+        m_accountToUse->refresh();
+    }
+    while (tryagain) {
+        if (tries > 0 && tries % 3 == 0) {
+            auto result =
+                QMessageBox::question(m_parentWidget, tr("Continue launch?"),
+                                      tr("It looks like we couldn't launch after %1 tries. Usually this can be fixed by logging out and "
+                                         "logging back in your Microsoft account. If that doesn't work, Minecraft authentication servers "
+                                         "may be having an outage or you may need a VPN in your region. Do you want to continue trying?")
+                                          .arg(tries));
+
+            if (result == QMessageBox::No) {
+                emitAborted();
+                return;
+            }
+        }
+        tries++;
+        m_session = std::make_shared<AuthSession>();
+        m_session->wants_online = m_online;
+        m_session->demo = m_demo;
+        m_accountToUse->fillSession(m_session);
+
+        MinecraftAccountPtr accountToCheck;
+
+        if (m_accountToUse->ownsMinecraft())
+            accountToCheck = m_accountToUse;
+        else if (const MinecraftAccountPtr defaultAccount = APPLICATION->accounts()->defaultAccount();
+                 defaultAccount != nullptr && defaultAccount->ownsMinecraft()) {
+            accountToCheck = defaultAccount;
+        } else {
+            for (int i = 0; i < APPLICATION->accounts()->count(); i++) {
+                MinecraftAccountPtr account = APPLICATION->accounts()->at(i);
+                if (account->ownsMinecraft())
+                    accountToCheck = account;
+            }
+        }
+
+        if (accountToCheck == nullptr) {
+            if (!m_session->demo)
+                m_session->demo = askPlayDemo();
+
+            if (m_session->demo)
+                launchInstance();
+            else
+                emitFailed(tr("Launch cancelled - account does not own Minecraft."));
+
+            return;
+        }
+
+        switch (accountToCheck->accountState()) {
+            case AccountState::Offline: {
+                m_session->wants_online = false;
+            }
+            /* fallthrough */
+            case AccountState::Online: {
+                if (!m_session->wants_online && m_accountToUse->accountType() != AccountType::Offline) {
+                    // we ask the user for a player name
+                    bool ok = false;
+                    QString name;
+                    if (m_offlineName.isEmpty()) {
+                        name = askOfflineName(m_session->player_name, m_session->demo, &ok);
+                        if (!ok) {
+                            tryagain = false;
+                            break;
+                        }
+                    } else {
+                        name = m_offlineName;
+                    }
+                    m_session->MakeOffline(name);
+                    // offline flavored game from here :3
+                } else if (m_accountToUse == accountToCheck && !m_accountToUse->hasProfile()) {
+                    // Now handle setting up a profile name here...
+                    ProfileSetupDialog dialog(m_accountToUse, m_parentWidget);
+                    if (dialog.exec() == QDialog::Accepted) {
+                        tryagain = true;
+                        continue;
+                    } else {
+                        emitFailed(tr("Received undetermined session status during login."));
+                        return;
+                    }
+                }
+
+                if (m_accountToUse->accountType() == AccountType::Offline)
+                    m_session->wants_online = false;
+
+                // we own Minecraft, there is a profile, it's all ready to go!
+                launchInstance();
+                return;
+            }
+            case AccountState::Errored:
+                // This means some sort of soft error that we can fix with a refresh ... so let's refresh.
+            case AccountState::Unchecked: {
+                accountToCheck->refresh();
+            }
+            /* fallthrough */
+            case AccountState::Working: {
+                // refresh is in progress, we need to wait for it to finish to proceed.
+                ProgressDialog progDialog(m_parentWidget);
+                progDialog.setSkipButton(true, tr("Abort"));
+
+                auto task = accountToCheck->currentTask();
+                progDialog.execWithTask(task.get());
+
+                // don't retry if aborted
+                if (task->getState() == Task::State::AbortedByUser)
+                    tryagain = false;
+
+                continue;
+            }
+            case AccountState::Expired: {
+                if (reauthenticateAccount(accountToCheck))
+                    continue;
+                return;
+            }
+            case AccountState::Disabled: {
+                auto errorString = tr("The launcher's client identification has changed. Please remove '%1' and try again.")
+                                       .arg(accountToCheck->profileName());
+
+                QMessageBox::warning(m_parentWidget, tr("Client identification changed"), errorString, QMessageBox::StandardButton::Ok,
+                                     QMessageBox::StandardButton::Ok);
+                emitFailed(errorString);
+                return;
+            }
+            case AccountState::Gone: {
+                auto errorString =
+                    tr("'%1' no longer exists on the servers. It may have been migrated, in which case please add the new account "
+                       "you migrated this one to.")
+                        .arg(accountToCheck->profileName());
+                QMessageBox::warning(m_parentWidget, tr("Account gone"), errorString, QMessageBox::StandardButton::Ok,
+                                     QMessageBox::StandardButton::Ok);
+                emitFailed(errorString);
+                return;
+            }
+        }
+    }
+    emitFailed(tr("Failed to launch."));
+}
+
+bool LaunchController::reauthenticateAccount(MinecraftAccountPtr account)
+{
+    auto button = QMessageBox::warning(
+        m_parentWidget, tr("Account refresh failed"),
+        tr("'%1' has expired and needs to be reauthenticated. Do you want to reauthenticate this account?").arg(account->profileName()),
+        QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, QMessageBox::StandardButton::Yes);
+    if (button == QMessageBox::StandardButton::Yes) {
+        auto accounts = APPLICATION->accounts();
+        bool isDefault = accounts->defaultAccount() == account;
+        accounts->removeAccount(accounts->index(accounts->findAccountByProfileId(account->profileId())));
+        if (account->accountType() == AccountType::MSA) {
+            auto newAccount = MSALoginDialog::newAccount(m_parentWidget);
+
+            if (newAccount != nullptr) {
+                accounts->addAccount(newAccount);
+
+                if (isDefault)
+                    accounts->setDefaultAccount(newAccount);
+
+                if (m_accountToUse == account) {
+                    m_accountToUse = nullptr;
+                    decideAccount();
+                }
+                return true;
+            }
+        }
+    }
+
+    emitFailed(tr("The account has expired and needs to be reauthenticated"));
+    return false;
+}
+
+void LaunchController::launchInstance()
+{
+    Q_ASSERT_X(m_instance != NULL, "launchInstance", "instance is NULL");
+    Q_ASSERT_X(m_session.get() != nullptr, "launchInstance", "session is NULL");
+
+    if (!m_instance->reloadSettings()) {
+        QMessageBox::critical(m_parentWidget, tr("Error!"), tr("Couldn't load the instance profile."));
+        emitFailed(tr("Couldn't load the instance profile."));
+        return;
+    }
+
+    m_launcher = m_instance->createLaunchTask(m_session, m_targetToJoin);
+    if (!m_launcher) {
+        emitFailed(tr("Couldn't instantiate a launcher."));
+        return;
+    }
+
+    auto console = qobject_cast<InstanceWindow*>(m_parentWidget);
+    auto showConsole = m_instance->settings()->get("ShowConsole").toBool();
+    if (!console && showConsole) {
+        APPLICATION->showInstanceWindow(m_instance);
+    }
+    connect(m_launcher, &LaunchTask::readyForLaunch, this, &LaunchController::readyForLaunch);
+    connect(m_launcher, &LaunchTask::succeeded, this, &LaunchController::onSucceeded);
+    connect(m_launcher, &LaunchTask::failed, this, &LaunchController::onFailed);
+    connect(m_launcher, &LaunchTask::requestProgress, this, &LaunchController::onProgressRequested);
+
+    // Prepend Online and Auth Status
+    QString online_mode;
+    if (m_session->wants_online) {
+        online_mode = "online";
+
+        // Prepend Server Status
+        QStringList servers = { "login.microsoftonline.com", "session.minecraft.net", "textures.minecraft.net", "api.mojang.com" };
+
+        m_launcher->prependStep(makeShared<PrintServers>(m_launcher, servers));
+    } else {
+        online_mode = m_demo ? "demo" : "offline";
+    }
+
+    m_launcher->prependStep(makeShared<TextPrint>(m_launcher, "Launched instance in " + online_mode + " mode\n", MessageLevel::Launcher));
+
+    // Prepend Version
+    {
+        auto versionString = QString("%1 version: %2 (%3)")
+                                 .arg(BuildConfig.LAUNCHER_DISPLAYNAME, BuildConfig.printableVersionString(), BuildConfig.BUILD_PLATFORM);
+        m_launcher->prependStep(makeShared<TextPrint>(m_launcher, versionString + "\n\n", MessageLevel::Launcher));
+    }
+    m_launcher->start();
+}
+
+void LaunchController::readyForLaunch()
+{
+    if (!m_profiler) {
+        m_launcher->proceed();
+        return;
+    }
+
+    QString error;
+    if (!m_profiler->check(&error)) {
+        m_launcher->abort();
+        emitFailed("Profiler startup failed!");
+        QMessageBox::critical(m_parentWidget, tr("Error!"), tr("Profiler check for %1 failed: %2").arg(m_profiler->name(), error));
+        return;
+    }
+    BaseProfiler* profilerInstance = m_profiler->createProfiler(m_launcher->instance(), this);
+
+    connect(profilerInstance, &BaseProfiler::readyToLaunch, [this](const QString& message) {
+        QMessageBox msg(m_parentWidget);
+        msg.setText(tr("The game launch is delayed until you press the "
+                       "button. This is the right time to setup the profiler, as the "
+                       "profiler server is running now.\n\n%1")
+                        .arg(message));
+        msg.setWindowTitle(tr("Waiting."));
+        msg.setIcon(QMessageBox::Information);
+        msg.addButton(tr("&Launch"), QMessageBox::AcceptRole);
+        msg.exec();
+        m_launcher->proceed();
+    });
+    connect(profilerInstance, &BaseProfiler::abortLaunch, [this](const QString& message) {
+        QMessageBox msg;
+        msg.setText(tr("Couldn't start the profiler: %1").arg(message));
+        msg.setWindowTitle(tr("Error"));
+        msg.setIcon(QMessageBox::Critical);
+        msg.addButton(QMessageBox::Ok);
+        msg.setModal(true);
+        msg.exec();
+        m_launcher->abort();
+        emitFailed("Profiler startup failed!");
+    });
+    profilerInstance->beginProfiling(m_launcher);
+}
+
+void LaunchController::onSucceeded()
+{
+    emitSucceeded();
+}
+
+void LaunchController::onFailed(QString reason)
+{
+    if (m_instance->settings()->get("ShowConsoleOnError").toBool()) {
+        APPLICATION->showInstanceWindow(m_instance, "console");
+    }
+    emitFailed(reason);
+}
+
+void LaunchController::onProgressRequested(Task* task)
+{
+    ProgressDialog progDialog(m_parentWidget);
+    progDialog.setSkipButton(true, tr("Abort"));
+    m_launcher->proceed();
+    progDialog.execWithTask(task);
+}
+
+bool LaunchController::abort()
+{
+    if (!m_launcher) {
+        return true;
+    }
+    if (!m_launcher->canAbort()) {
+        return false;
+    }
+    auto response = CustomMessageBox::selectable(m_parentWidget, tr("Kill Minecraft?"),
+                                                 tr("This can cause the instance to get corrupted and should only be used if Minecraft "
+                                                    "is frozen for some reason"),
+                                                 QMessageBox::Question, QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes)
+                        ->exec();
+    if (response == QMessageBox::Yes) {
+        return m_launcher->abort();
+    }
+    return false;
+}
+
+===== END launcher/LaunchController.cpp =====
+
+===== BEGIN launcher/LaunchController.h =====
+// SPDX-License-Identifier: GPL-3.0-only
+/*
+ *  Prism Launcher - Minecraft Launcher
+ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * This file incorporates work covered by the following copyright and
+ * permission notice:
+ *
+ *      Copyright 2013-2021 MultiMC Contributors
+ *
+ *      Licensed under the Apache License, Version 2.0 (the "License");
+ *      you may not use this file except in compliance with the License.
+ *      You may obtain a copy of the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *      Unless required by applicable law or agreed to in writing, software
+ *      distributed under the License is distributed on an "AS IS" BASIS,
+ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *      See the License for the specific language governing permissions and
+ *      limitations under the License.
+ */
+
+#pragma once
+#include <BaseInstance.h>
+#include <tools/BaseProfiler.h>
+#include <QObject>
+
+#include "minecraft/auth/MinecraftAccount.h"
+#include "minecraft/launch/MinecraftTarget.h"
+
+class InstanceWindow;
+class LaunchController : public Task {
+    Q_OBJECT
+   public:
+    void executeTask() override;
+
+    LaunchController();
+    virtual ~LaunchController() = default;
+
+    void setInstance(BaseInstance* instance) { m_instance = instance; }
+
+    BaseInstance* instance() { return m_instance; }
+
+    void setOnline(bool online) { m_online = online; }
+
+    void setOfflineName(const QString& offlineName) { m_offlineName = offlineName; }
+
+    void setDemo(bool demo) { m_demo = demo; }
+
+    void setProfiler(BaseProfilerFactory* profiler) { m_profiler = profiler; }
+
+    void setParentWidget(QWidget* widget) { m_parentWidget = widget; }
+
+    void setTargetToJoin(MinecraftTarget::Ptr targetToJoin) { m_targetToJoin = std::move(targetToJoin); }
+
+    void setAccountToUse(MinecraftAccountPtr accountToUse) { m_accountToUse = std::move(accountToUse); }
+
+    QString id() { return m_instance->id(); }
+
+    bool abort() override;
+
+   private:
+    void login();
+    void launchInstance();
+    void decideAccount();
+    bool askPlayDemo();
+    QString askOfflineName(QString playerName, bool demo, bool* ok = nullptr);
+    bool reauthenticateAccount(MinecraftAccountPtr account);
+
+   private slots:
+    void readyForLaunch();
+
+    void onSucceeded();
+    void onFailed(QString reason);
+    void onProgressRequested(Task* task);
+
+   private:
+    BaseProfilerFactory* m_profiler = nullptr;
+    bool m_online = true;
+    QString m_offlineName;
+    bool m_demo = false;
+    BaseInstance* m_instance;
+    QWidget* m_parentWidget = nullptr;
+    InstanceWindow* m_console = nullptr;
+    MinecraftAccountPtr m_accountToUse = nullptr;
+    AuthSessionPtr m_session;
+    LaunchTask* m_launcher;
+    MinecraftTarget::Ptr m_targetToJoin;
+};
+
+===== END launcher/LaunchController.h =====
+
+===== BEGIN launcher/minecraft/auth/AccountData.cpp =====
+// SPDX-License-Identifier: GPL-3.0-only
+/*
+ *  Prism Launcher - Minecraft Launcher
+ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * This file incorporates work covered by the following copyright and
+ * permission notice:
+ *
+ *      Copyright 2013-2021 MultiMC Contributors
+ *
+ *      Licensed under the Apache License, Version 2.0 (the "License");
+ *      you may not use this file except in compliance with the License.
+ *      You may obtain a copy of the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *      Unless required by applicable law or agreed to in writing, software
+ *      distributed under the License is distributed on an "AS IS" BASIS,
+ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *      See the License for the specific language governing permissions and
+ *      limitations under the License.
+ */
+
+#include "AccountData.h"
+#include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QUuid>
+
+namespace {
+void tokenToJSONV3(QJsonObject& parent, const Token& t, const char* tokenName)
+{
+    if (!t.persistent) {
+        return;
+    }
+    QJsonObject out;
+    if (t.issueInstant.isValid()) {
+        out["iat"] = QJsonValue(t.issueInstant.toMSecsSinceEpoch() / 1000);
+    }
+
+    if (t.notAfter.isValid()) {
+        out["exp"] = QJsonValue(t.notAfter.toMSecsSinceEpoch() / 1000);
+    }
+
+    bool save = false;
+    if (!t.token.isEmpty()) {
+        out["token"] = QJsonValue(t.token);
+        save = true;
+    }
+    if (!t.refresh_token.isEmpty()) {
+        out["refresh_token"] = QJsonValue(t.refresh_token);
+        save = true;
+    }
+    if (t.extra.size()) {
+        out["extra"] = QJsonObject::fromVariantMap(t.extra);
+        save = true;
+    }
+    if (save) {
+        parent[tokenName] = out;
+    }
+}
+
+Token tokenFromJSONV3(const QJsonObject& parent, const char* tokenName)
+{
+    Token out;
+    auto tokenObject = parent.value(tokenName).toObject();
+    if (tokenObject.isEmpty()) {
+        return out;
+    }
+    auto issueInstant = tokenObject.value("iat");
+    if (issueInstant.isDouble()) {
+        out.issueInstant = QDateTime::fromMSecsSinceEpoch(((int64_t)issueInstant.toDouble()) * 1000);
+    }
+
+    auto notAfter = tokenObject.value("exp");
+    if (notAfter.isDouble()) {
+        out.notAfter = QDateTime::fromMSecsSinceEpoch(((int64_t)notAfter.toDouble()) * 1000);
+    }
+
+    auto token = tokenObject.value("token");
+    if (token.isString()) {
+        out.token = token.toString();
+        out.validity = Validity::Assumed;
+    }
+
+    auto refresh_token = tokenObject.value("refresh_token");
+    if (refresh_token.isString()) {
+        out.refresh_token = refresh_token.toString();
+    }
+
+    auto extra = tokenObject.value("extra");
+    if (extra.isObject()) {
+        out.extra = extra.toObject().toVariantMap();
+    }
+    return out;
+}
+
+void profileToJSONV3(QJsonObject& parent, MinecraftProfile p, const char* tokenName)
+{
+    if (p.id.isEmpty()) {
+        return;
+    }
+    QJsonObject out;
+    out["id"] = QJsonValue(p.id);
+    out["name"] = QJsonValue(p.name);
+    if (!p.currentCape.isEmpty()) {
+        out["cape"] = p.currentCape;
+    }
+
+    {
+        QJsonObject skinObj;
+        skinObj["id"] = p.skin.id;
+        skinObj["url"] = p.skin.url;
+        skinObj["variant"] = p.skin.variant;
+        if (p.skin.data.size()) {
+            skinObj["data"] = QString::fromLatin1(p.skin.data.toBase64());
+        }
+        out["skin"] = skinObj;
+    }
+
+    QJsonArray capesArray;
+    for (auto& cape : p.capes) {
+        QJsonObject capeObj;
+        capeObj["id"] = cape.id;
+        capeObj["url"] = cape.url;
+        capeObj["alias"] = cape.alias;
+        if (cape.data.size()) {
+            capeObj["data"] = QString::fromLatin1(cape.data.toBase64());
+        }
+        capesArray.push_back(capeObj);
+    }
+    out["capes"] = capesArray;
+    parent[tokenName] = out;
+}
+
+MinecraftProfile profileFromJSONV3(const QJsonObject& parent, const char* tokenName)
+{
+    MinecraftProfile out;
+    auto tokenObject = parent.value(tokenName).toObject();
+    if (tokenObject.isEmpty()) {
+        return out;
+    }
+    {
+        auto idV = tokenObject.value("id");
+        auto nameV = tokenObject.value("name");
+        if (!idV.isString() || !nameV.isString()) {
+            qWarning() << "mandatory profile attributes are missing or of unexpected type";
+            return MinecraftProfile();
+        }
+        out.name = nameV.toString();
+        out.id = idV.toString();
+    }
+
+    {
+        auto skinV = tokenObject.value("skin");
+        if (!skinV.isObject()) {
+            qWarning() << "skin is missing";
+            return MinecraftProfile();
+        }
+        auto skinObj = skinV.toObject();
+        auto idV = skinObj.value("id");
+        auto urlV = skinObj.value("url");
+        auto variantV = skinObj.value("variant");
+        if (!idV.isString() || !urlV.isString() || !variantV.isString()) {
+            qWarning() << "mandatory skin attributes are missing or of unexpected type";
+            return MinecraftProfile();
+        }
+        out.skin.id = idV.toString();
+        out.skin.url = urlV.toString();
+        out.skin.url.replace("http://textures.minecraft.net", "https://textures.minecraft.net");
+        out.skin.variant = variantV.toString();
+
+        // data for skin is optional
+        auto dataV = skinObj.value("data");
+        if (dataV.isString()) {
+            // TODO: validate base64
+            out.skin.data = QByteArray::fromBase64(dataV.toString().toLatin1());
+        } else if (!dataV.isUndefined()) {
+            qWarning() << "skin data is something unexpected";
+            return MinecraftProfile();
+        }
+    }
+
+    {
+        auto capesV = tokenObject.value("capes");
+        if (!capesV.isArray()) {
+            qWarning() << "capes is not an array!";
+            return MinecraftProfile();
+        }
+        auto capesArray = capesV.toArray();
+        for (auto capeV : capesArray) {
+            if (!capeV.isObject()) {
+                qWarning() << "cape is not an object!";
+                return MinecraftProfile();
+            }
+            auto capeObj = capeV.toObject();
+            auto idV = capeObj.value("id");
+            auto urlV = capeObj.value("url");
+            auto aliasV = capeObj.value("alias");
+            if (!idV.isString() || !urlV.isString() || !aliasV.isString()) {
+                qWarning() << "mandatory skin attributes are missing or of unexpected type";
+                return MinecraftProfile();
+            }
+            Cape cape;
+            cape.id = idV.toString();
+            cape.url = urlV.toString();
+            cape.url.replace("http://textures.minecraft.net", "https://textures.minecraft.net");
+            cape.alias = aliasV.toString();
+
+            // data for cape is optional.
+            auto dataV = capeObj.value("data");
+            if (dataV.isString()) {
+                // TODO: validate base64
+                cape.data = QByteArray::fromBase64(dataV.toString().toLatin1());
+            } else if (!dataV.isUndefined()) {
+                qWarning() << "cape data is something unexpected";
+                return MinecraftProfile();
+            }
+            out.capes[cape.id] = cape;
+        }
+    }
+    // current cape
+    {
+        auto capeV = tokenObject.value("cape");
+        if (capeV.isString()) {
+            auto currentCape = capeV.toString();
+            if (out.capes.contains(currentCape)) {
+                out.currentCape = currentCape;
+            }
+        }
+    }
+    out.validity = Validity::Assumed;
+    return out;
+}
+
+void entitlementToJSONV3(QJsonObject& parent, MinecraftEntitlement p)
+{
+    if (p.validity == Validity::None) {
+        return;
+    }
+    QJsonObject out;
+    out["ownsMinecraft"] = QJsonValue(p.ownsMinecraft);
+    out["canPlayMinecraft"] = QJsonValue(p.canPlayMinecraft);
+    parent["entitlement"] = out;
+}
+
+bool entitlementFromJSONV3(const QJsonObject& parent, MinecraftEntitlement& out)
+{
+    auto entitlementObject = parent.value("entitlement").toObject();
+    if (entitlementObject.isEmpty()) {
+        return false;
+    }
+    {
+        auto ownsMinecraftV = entitlementObject.value("ownsMinecraft");
+        auto canPlayMinecraftV = entitlementObject.value("canPlayMinecraft");
+        if (!ownsMinecraftV.isBool() || !canPlayMinecraftV.isBool()) {
+            qWarning() << "mandatory attributes are missing or of unexpected type";
+            return false;
+        }
+        out.canPlayMinecraft = canPlayMinecraftV.toBool(false);
+        out.ownsMinecraft = ownsMinecraftV.toBool(false);
+        out.validity = Validity::Assumed;
+    }
+    return true;
+}
+
+}  // namespace
+
+bool AccountData::resumeStateFromV3(QJsonObject data)
+{
+    auto typeV = data.value("type");
+    if (!typeV.isString()) {
+        qWarning() << "Failed to parse account data: type is missing.";
+        return false;
+    }
+    auto typeS = typeV.toString();
+    if (typeS == "MSA") {
+        type = AccountType::MSA;
+    } else if (typeS == "Offline") {
+        type = AccountType::Offline;
+    } else {
+        qWarning() << "Failed to parse account data: type is not recognized.";
+        return false;
+    }
+
+    if (type == AccountType::MSA) {
+        auto clientIDV = data.value("msa-client-id");
+        if (clientIDV.isString()) {
+            msaClientID = clientIDV.toString();
+        }  // leave msaClientID empty if it doesn't exist or isn't a string
+        msaToken = tokenFromJSONV3(data, "msa");
+        userToken = tokenFromJSONV3(data, "utoken");
+        mojangservicesToken = tokenFromJSONV3(data, "xrp-mc");
+    }
+
+    yggdrasilToken = tokenFromJSONV3(data, "ygg");
+    // versions before 7.2 used "offline" as the offline token
+    if (yggdrasilToken.token == "offline")
+        yggdrasilToken.token = "0";
+
+    minecraftProfile = profileFromJSONV3(data, "profile");
+    if (!entitlementFromJSONV3(data, minecraftEntitlement)) {
+        if (minecraftProfile.validity != Validity::None) {
+            minecraftEntitlement.canPlayMinecraft = true;
+            minecraftEntitlement.ownsMinecraft = true;
+            minecraftEntitlement.validity = Validity::Assumed;
+        }
+    }
+
+    validity_ = minecraftProfile.validity;
+    return true;
+}
+
+QJsonObject AccountData::saveState() const
+{
+    QJsonObject output;
+    if (type == AccountType::MSA) {
+        output["type"] = "MSA";
+        output["msa-client-id"] = msaClientID;
+        tokenToJSONV3(output, msaToken, "msa");
+        tokenToJSONV3(output, userToken, "utoken");
+        tokenToJSONV3(output, mojangservicesToken, "xrp-mc");
+    } else if (type == AccountType::Offline) {
+        output["type"] = "Offline";
+    }
+
+    tokenToJSONV3(output, yggdrasilToken, "ygg");
+    profileToJSONV3(output, minecraftProfile, "profile");
+    entitlementToJSONV3(output, minecraftEntitlement);
+    return output;
+}
+
+QString AccountData::accessToken() const
+{
+    return yggdrasilToken.token;
+}
+
+QString AccountData::profileId() const
+{
+    return minecraftProfile.id;
+}
+
+QString AccountData::profileName() const
+{
+    if (minecraftProfile.name.size() == 0) {
+        return QObject::tr("No Minecraft profile");
+    }
+
+    return minecraftProfile.name;
+}
+
+QString AccountData::lastError() const
+{
+    return errorString;
+}
+
+===== END launcher/minecraft/auth/AccountData.cpp =====
+
+===== BEGIN launcher/minecraft/auth/AccountData.h =====
+// SPDX-License-Identifier: GPL-3.0-only
+/*
+ *  Prism Launcher - Minecraft Launcher
+ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * This file incorporates work covered by the following copyright and
+ * permission notice:
+ *
+ *      Copyright 2013-2021 MultiMC Contributors
+ *
+ *      Licensed under the Apache License, Version 2.0 (the "License");
+ *      you may not use this file except in compliance with the License.
+ *      You may obtain a copy of the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *      Unless required by applicable law or agreed to in writing, software
+ *      distributed under the License is distributed on an "AS IS" BASIS,
+ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *      See the License for the specific language governing permissions and
+ *      limitations under the License.
+ */
+
+#pragma once
+#include <QByteArray>
+#include <QJsonObject>
+#include <QList>
+#include <QString>
+
+#include <QDateTime>
+#include <QMap>
+#include <QVariantMap>
+
+enum class Validity { None, Assumed, Certain };
+
+struct Token {
+    QDateTime issueInstant;
+    QDateTime notAfter;
+    QString token;
+    QString refresh_token;
+    QVariantMap extra;
+
+    Validity validity = Validity::None;
+    bool persistent = true;
+};
+
+struct Skin {
+    QString id;
+    QString url;
+    QString variant;
+
+    QByteArray data;
+};
+
+struct Cape {
+    QString id;
+    QString url;
+    QString alias;
+
+    QByteArray data;
+};
+
+struct MinecraftEntitlement {
+    bool ownsMinecraft = false;
+    bool canPlayMinecraft = false;
+    Validity validity = Validity::None;
+};
+
+struct MinecraftProfile {
+    QString id;
+    QString name;
+    Skin skin;
+    QString currentCape;
+    QMap<QString, Cape> capes;
+    Validity validity = Validity::None;
+};
+
+enum class AccountType { MSA, Offline };
+
+enum class AccountState { Unchecked, Offline, Working, Online, Disabled, Errored, Expired, Gone };
+
+struct AccountData {
+    QJsonObject saveState() const;
+    bool resumeStateFromV3(QJsonObject data);
+
+    //! Yggdrasil access token, as passed to the game.
+    QString accessToken() const;
+
+    QString profileId() const;
+    QString profileName() const;
+
+    QString lastError() const;
+
+    AccountType type = AccountType::MSA;
+
+    QString msaClientID;
+    Token msaToken;
+    Token userToken;
+    Token mojangservicesToken;
+
+    Token yggdrasilToken;
+    MinecraftProfile minecraftProfile;
+    MinecraftEntitlement minecraftEntitlement;
+    Validity validity_ = Validity::None;
+
+    // runtime only information (not saved with the account)
+    QString internalId;
+    QString errorString;
+    AccountState accountState = AccountState::Unchecked;
+};
+
+===== END launcher/minecraft/auth/AccountData.h =====
+
+===== BEGIN launcher/minecraft/auth/AuthFlow.cpp =====
+#include <QDebug>
+#include <QNetworkReply>
+#include <QNetworkRequest>
+
+#include "minecraft/auth/AccountData.h"
+#include "minecraft/auth/steps/EntitlementsStep.h"
+#include "minecraft/auth/steps/GetSkinStep.h"
+#include "minecraft/auth/steps/LauncherLoginStep.h"
+#include "minecraft/auth/steps/MSADeviceCodeStep.h"
+#include "minecraft/auth/steps/MSAStep.h"
+#include "minecraft/auth/steps/MinecraftProfileStep.h"
+#include "minecraft/auth/steps/XboxAuthorizationStep.h"
+#include "minecraft/auth/steps/XboxUserStep.h"
+#include "tasks/Task.h"
+
+#include "AuthFlow.h"
+
+#include <Application.h>
+
+AuthFlow::AuthFlow(AccountData* data, Action action) : Task(), m_data(data)
+{
+    if (data->type == AccountType::MSA) {
+        if (action == Action::DeviceCode) {
+            auto oauthStep = makeShared<MSADeviceCodeStep>(m_data);
+            connect(oauthStep.get(), &MSADeviceCodeStep::authorizeWithBrowser, this, &AuthFlow::authorizeWithBrowserWithExtra);
+            connect(this, &Task::aborted, oauthStep.get(), &MSADeviceCodeStep::abort);
+            m_steps.append(oauthStep);
+        } else {
+            auto oauthStep = makeShared<MSAStep>(m_data, action == Action::Refresh);
+            connect(oauthStep.get(), &MSAStep::authorizeWithBrowser, this, &AuthFlow::authorizeWithBrowser);
+            m_steps.append(oauthStep);
+        }
+        m_steps.append(makeShared<XboxUserStep>(m_data));
+        m_steps.append(
+            makeShared<XboxAuthorizationStep>(m_data, &m_data->mojangservicesToken, "rp://api.minecraftservices.com/", "Mojang"));
+        m_steps.append(makeShared<LauncherLoginStep>(m_data));
+        m_steps.append(makeShared<EntitlementsStep>(m_data));
+        m_steps.append(makeShared<MinecraftProfileStep>(m_data));
+        m_steps.append(makeShared<GetSkinStep>(m_data));
+    }
+    changeState(AccountTaskState::STATE_CREATED);
+}
+
+void AuthFlow::succeed()
+{
+    m_data->validity_ = Validity::Certain;
+    changeState(AccountTaskState::STATE_SUCCEEDED, tr("Finished all authentication steps"));
+}
+
+void AuthFlow::executeTask()
+{
+    changeState(AccountTaskState::STATE_WORKING, tr("Initializing"));
+    nextStep();
+}
+
+void AuthFlow::nextStep()
+{
+    if (!Task::isRunning()) {
+        return;
+    }
+    if (m_steps.size() == 0) {
+        // we got to the end without an incident... assume this is all.
+        m_currentStep.reset();
+        succeed();
+        return;
+    }
+    m_currentStep = m_steps.front();
+    qDebug() << "AuthFlow:" << m_currentStep->describe();
+    setStatus(m_currentStep->describe());
+    m_steps.pop_front();
+    connect(m_currentStep.get(), &AuthStep::finished, this, &AuthFlow::stepFinished);
+
+    m_currentStep->perform();
+}
+
+void AuthFlow::stepFinished(AccountTaskState resultingState, QString message)
+{
+    if (changeState(resultingState, message))
+        nextStep();
+}
+
+bool AuthFlow::changeState(AccountTaskState newState, QString reason)
+{
+    m_taskState = newState;
+    setDetails(reason);
+    switch (newState) {
+        case AccountTaskState::STATE_CREATED: {
+            setStatus(tr("Waiting..."));
+            m_data->errorString.clear();
+            return true;
+        }
+        case AccountTaskState::STATE_WORKING: {
+            if (!m_currentStep) {
+                setStatus(tr("Preparing to log in..."));
+            }
+            m_data->accountState = AccountState::Working;
+            return true;
+        }
+        case AccountTaskState::STATE_SUCCEEDED: {
+            setStatus(tr("Authentication task succeeded."));
+            m_data->accountState = AccountState::Online;
+            emitSucceeded();
+            return false;
+        }
+        case AccountTaskState::STATE_OFFLINE: {
+            setStatus(tr("Failed to contact the authentication server."));
+            m_data->errorString = reason;
+            m_data->accountState = AccountState::Offline;
+            emitFailed(reason);
+            return false;
+        }
+        case AccountTaskState::STATE_DISABLED: {
+            setStatus(tr("Client ID has changed. New session needs to be created."));
+            m_data->errorString = reason;
+            m_data->accountState = AccountState::Disabled;
+            emitFailed(reason);
+            return false;
+        }
+        case AccountTaskState::STATE_FAILED_SOFT: {
+            setStatus(tr("Encountered an error during authentication."));
+            m_data->errorString = reason;
+            m_data->accountState = AccountState::Errored;
+            emitFailed(reason);
+            return false;
+        }
+        case AccountTaskState::STATE_FAILED_HARD: {
+            setStatus(tr("Failed to authenticate. The session has expired."));
+            m_data->errorString = reason;
+            m_data->accountState = AccountState::Expired;
+            emitFailed(reason);
+            return false;
+        }
+        case AccountTaskState::STATE_FAILED_GONE: {
+            setStatus(tr("Failed to authenticate. The account no longer exists."));
+            m_data->errorString = reason;
+            m_data->accountState = AccountState::Gone;
+            emitFailed(reason);
+            return false;
+        }
+        default: {
+            setStatus(tr("..."));
+            QString error = tr("Unknown account task state: %1").arg(int(newState));
+            m_data->accountState = AccountState::Errored;
+            emitFailed(error);
+            return false;
+        }
+    }
+}
+bool AuthFlow::abort()
+{
+    if (m_currentStep)
+        m_currentStep->abort();
+    emitAborted();
+    return true;
+}
+
+===== END launcher/minecraft/auth/AuthFlow.cpp =====
+
+===== BEGIN launcher/minecraft/auth/AuthSession.h =====
+#pragma once
+
+#include <QString>
+#include <memory>
+
+class MinecraftAccount;
+
+struct AuthSession {
+    bool MakeOffline(QString offline_playername);
+    void MakeDemo(QString name, QString uuid);
+
+    QString serializeUserProperties();
+
+    enum Status {
+        Undetermined,
+        RequiresOAuth,
+        RequiresPassword,
+        RequiresProfileSetup,
+        PlayableOffline,
+        PlayableOnline,
+        GoneOrMigrated
+    } status = Undetermined;
+
+    // combined session ID
+    QString session;
+    // volatile auth token
+    QString access_token;
+    // profile name
+    QString player_name;
+    // profile ID
+    QString uuid;
+    // 'legacy' or 'mojang', depending on account type
+    QString user_type;
+    // Did the auth server reply?
+    bool auth_server_online = false;
+    // Did the user request online mode?
+    bool wants_online = true;
+
+    // Is this a demo session?
+    bool demo = false;
+};
+
+using AuthSessionPtr = std::shared_ptr<AuthSession>;
+
+===== END launcher/minecraft/auth/AuthSession.h =====
+
+===== BEGIN launcher/minecraft/auth/MinecraftAccount.cpp =====
+// SPDX-License-Identifier: GPL-3.0-only
+/*
+ *  Prism Launcher - Minecraft Launcher
+ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * This file incorporates work covered by the following copyright and
+ * permission notice:
+ *
+ *      Copyright 2013-2021 MultiMC Contributors
+ *
+ *      Authors: Orochimarufan <orochimarufan.x3@gmail.com>
+ *
+ *      Licensed under the Apache License, Version 2.0 (the "License");
+ *      you may not use this file except in compliance with the License.
+ *      You may obtain a copy of the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *      Unless required by applicable law or agreed to in writing, software
+ *      distributed under the License is distributed on an "AS IS" BASIS,
+ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *      See the License for the specific language governing permissions and
+ *      limitations under the License.
+ */
+
+#include "MinecraftAccount.h"
+
+#include <QColor>
+#include <QCryptographicHash>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QRegularExpression>
+#include <QStringList>
+#include <QUuid>
+
+#include <QDebug>
+
+#include <QPainter>
+
+#include "minecraft/auth/AccountData.h"
+#include "minecraft/auth/AuthFlow.h"
+
+MinecraftAccount::MinecraftAccount(QObject* parent) : QObject(parent)
+{
+    static const QRegularExpression s_removeChars("[{}-]");
+    data.internalId = QUuid::createUuid().toString().remove(s_removeChars);
+}
+
+MinecraftAccountPtr MinecraftAccount::loadFromJsonV3(const QJsonObject& json)
+{
+    MinecraftAccountPtr account(new MinecraftAccount());
+    if (account->data.resumeStateFromV3(json)) {
+        return account;
+    }
+    return nullptr;
+}
+
+MinecraftAccountPtr MinecraftAccount::createBlankMSA()
+{
+    MinecraftAccountPtr account(new MinecraftAccount());
+    account->data.type = AccountType::MSA;
+    return account;
+}
+
+MinecraftAccountPtr MinecraftAccount::createOffline(const QString& username)
+{
+    static const QRegularExpression s_removeChars("[{}-]");
+    auto account = makeShared<MinecraftAccount>();
+    account->data.type = AccountType::Offline;
+    account->data.yggdrasilToken.token = "0";
+    account->data.yggdrasilToken.validity = Validity::Certain;
+    account->data.yggdrasilToken.issueInstant = QDateTime::currentDateTimeUtc();
+    account->data.yggdrasilToken.extra["userName"] = username;
+    account->data.yggdrasilToken.extra["clientToken"] = QUuid::createUuid().toString().remove(s_removeChars);
+    account->data.minecraftProfile.id = uuidFromUsername(username).toString().remove(s_removeChars);
+    account->data.minecraftProfile.name = username;
+    account->data.minecraftProfile.validity = Validity::Certain;
+    return account;
+}
+
+QJsonObject MinecraftAccount::saveToJson() const
+{
+    return data.saveState();
+}
+
+AccountState MinecraftAccount::accountState() const
+{
+    return data.accountState;
+}
+
+QPixmap MinecraftAccount::getFace(int width, int height) const
+{
+    QPixmap skinTexture;
+    if (!skinTexture.loadFromData(data.minecraftProfile.skin.data, "PNG")) {
+        return QPixmap();
+    }
+    QPixmap skin = QPixmap(8, 8);
+    skin.fill(QColorConstants::Transparent);
+    QPainter painter(&skin);
+    painter.drawPixmap(0, 0, skinTexture.copy(8, 8, 8, 8));
+    painter.drawPixmap(0, 0, skinTexture.copy(40, 8, 8, 8));
+    return skin.scaled(width, height, Qt::KeepAspectRatio);
+}
+
+shared_qobject_ptr<AuthFlow> MinecraftAccount::login(bool useDeviceCode)
+{
+    Q_ASSERT(m_currentTask.get() == nullptr);
+
+    m_currentTask.reset(new AuthFlow(&data, useDeviceCode ? AuthFlow::Action::DeviceCode : AuthFlow::Action::Login));
+    connect(m_currentTask.get(), &Task::succeeded, this, &MinecraftAccount::authSucceeded);
+    connect(m_currentTask.get(), &Task::failed, this, &MinecraftAccount::authFailed);
+    connect(m_currentTask.get(), &Task::aborted, this, [this] { authFailed(tr("Aborted")); });
+    emit activityChanged(true);
+    return m_currentTask;
+}
+
+shared_qobject_ptr<AuthFlow> MinecraftAccount::refresh()
+{
+    if (m_currentTask) {
+        return m_currentTask;
+    }
+
+    m_currentTask.reset(new AuthFlow(&data, AuthFlow::Action::Refresh));
+
+    connect(m_currentTask.get(), &Task::succeeded, this, &MinecraftAccount::authSucceeded);
+    connect(m_currentTask.get(), &Task::failed, this, &MinecraftAccount::authFailed);
+    connect(m_currentTask.get(), &Task::aborted, this, [this] { authFailed(tr("Aborted")); });
+    emit activityChanged(true);
+    return m_currentTask;
+}
+
+shared_qobject_ptr<AuthFlow> MinecraftAccount::currentTask()
+{
+    return m_currentTask;
+}
+
+void MinecraftAccount::authSucceeded()
+{
+    m_currentTask.reset();
+    emit changed();
+    emit activityChanged(false);
+}
+
+void MinecraftAccount::authFailed(QString reason)
+{
+    switch (m_currentTask->taskState()) {
+        case AccountTaskState::STATE_OFFLINE:
+        case AccountTaskState::STATE_DISABLED: {
+            // NOTE: user will need to fix this themselves.
+        }
+        case AccountTaskState::STATE_FAILED_SOFT: {
+            // NOTE: this doesn't do much. There was an error of some sort.
+        } break;
+        case AccountTaskState::STATE_FAILED_HARD: {
+            if (accountType() == AccountType::MSA) {
+                data.msaToken.token = QString();
+                data.msaToken.refresh_token = QString();
+                data.msaToken.validity = Validity::None;
+                data.validity_ = Validity::None;
+            } else {
+                data.yggdrasilToken.token = QString();
+                data.yggdrasilToken.validity = Validity::None;
+                data.validity_ = Validity::None;
+            }
+            emit changed();
+        } break;
+        case AccountTaskState::STATE_FAILED_GONE: {
+            data.validity_ = Validity::None;
+            emit changed();
+        } break;
+        case AccountTaskState::STATE_WORKING: {
+            data.accountState = AccountState::Unchecked;
+        } break;
+        case AccountTaskState::STATE_CREATED:
+        case AccountTaskState::STATE_SUCCEEDED: {
+            // Not reachable here, as they are not failures.
+        }
+    }
+    m_currentTask.reset();
+    emit activityChanged(false);
+}
+
+bool MinecraftAccount::isActive() const
+{
+    return !m_currentTask.isNull();
+}
+
+bool MinecraftAccount::shouldRefresh() const
+{
+    /*
+     * Never refresh accounts that are being used by the game, it breaks the game session.
+     * Always refresh accounts that have not been refreshed yet during this session.
+     * Don't refresh broken accounts.
+     * Refresh accounts that would expire in the next 12 hours (fresh token validity is 24 hours).
+     */
+    if (isInUse()) {
+        return false;
+    }
+    switch (data.validity_) {
+        case Validity::Certain: {
+            break;
+        }
+        case Validity::None: {
+            return false;
+        }
+        case Validity::Assumed: {
+            return true;
+        }
+    }
+    auto now = QDateTime::currentDateTimeUtc();
+    auto issuedTimestamp = data.yggdrasilToken.issueInstant;
+    auto expiresTimestamp = data.yggdrasilToken.notAfter;
+
+    if (!expiresTimestamp.isValid()) {
+        expiresTimestamp = issuedTimestamp.addSecs(24 * 3600);
+    }
+    if (now.secsTo(expiresTimestamp) < (12 * 3600)) {
+        return true;
+    }
+    return false;
+}
+
+void MinecraftAccount::fillSession(AuthSessionPtr session)
+{
+    static const QRegularExpression s_removeChars("[{}-]");
+    if (ownsMinecraft() && !hasProfile()) {
+        session->status = AuthSession::RequiresProfileSetup;
+    } else {
+        if (session->wants_online) {
+            session->status = AuthSession::PlayableOnline;
+        } else {
+            session->status = AuthSession::PlayableOffline;
+        }
+    }
+
+    // volatile auth token
+    session->access_token = data.accessToken();
+    // profile name
+    session->player_name = data.profileName();
+    // profile ID
+    session->uuid = data.profileId();
+    if (session->uuid.isEmpty())
+        session->uuid = uuidFromUsername(session->player_name).toString().remove(s_removeChars);
+    // 'legacy' or 'mojang', depending on account type
+    session->user_type = typeString();
+    if (!session->access_token.isEmpty()) {
+        session->session = "token:" + data.accessToken() + ":" + data.profileId();
+    } else {
+        session->session = "-";
+    }
+}
+
+void MinecraftAccount::decrementUses()
+{
+    Usable::decrementUses();
+    if (!isInUse()) {
+        emit changed();
+        // FIXME: we now need a better way to identify accounts...
+        qWarning() << "Profile" << data.profileId() << "is no longer in use.";
+    }
+}
+
+void MinecraftAccount::incrementUses()
+{
+    bool wasInUse = isInUse();
+    Usable::incrementUses();
+    if (!wasInUse) {
+        emit changed();
+        // FIXME: we now need a better way to identify accounts...
+        qWarning() << "Profile" << data.profileId() << "is now in use.";
+    }
+}
+
+QUuid MinecraftAccount::uuidFromUsername(QString username)
+{
+    auto input = QString("OfflinePlayer:%1").arg(username).toUtf8();
+
+    // basically a reimplementation of Java's UUID#nameUUIDFromBytes
+    QByteArray digest = QCryptographicHash::hash(input, QCryptographicHash::Md5);
+
+    auto bOr = [](QByteArray& array, qsizetype index, char value) { array[index] |= value; };
+    auto bAnd = [](QByteArray& array, qsizetype index, char value) { array[index] &= value; };
+    bAnd(digest, 6, (char)0x0f);  // clear version
+    bOr(digest, 6, (char)0x30);   // set to version 3
+    bAnd(digest, 8, (char)0x3f);  // clear variant
+    bOr(digest, 8, (char)0x80);   // set to IETF variant
+
+    return QUuid::fromRfc4122(digest);
+}
+
+===== END launcher/minecraft/auth/MinecraftAccount.cpp =====
+
+===== BEGIN launcher/minecraft/auth/MinecraftAccount.h =====
+// SPDX-License-Identifier: GPL-3.0-only
+/*
+ *  Prism Launcher - Minecraft Launcher
+ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * This file incorporates work covered by the following copyright and
+ * permission notice:
+ *
+ *      Copyright 2013-2021 MultiMC Contributors
+ *
+ *      Licensed under the Apache License, Version 2.0 (the "License");
+ *      you may not use this file except in compliance with the License.
+ *      You may obtain a copy of the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *      Unless required by applicable law or agreed to in writing, software
+ *      distributed under the License is distributed on an "AS IS" BASIS,
+ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *      See the License for the specific language governing permissions and
+ *      limitations under the License.
+ */
+
+#pragma once
+
+#include <QJsonObject>
+#include <QList>
+#include <QMap>
+#include <QObject>
+#include <QPair>
+#include <QPixmap>
+#include <QString>
+
+#include "AccountData.h"
+#include "AuthSession.h"
+#include "QObjectPtr.h"
+#include "Usable.h"
+#include "minecraft/auth/AuthFlow.h"
+
+class Task;
+class MinecraftAccount;
+
+using MinecraftAccountPtr = shared_qobject_ptr<MinecraftAccount>;
+Q_DECLARE_METATYPE(MinecraftAccountPtr)
+
+/**
+ * A profile within someone's Mojang account.
+ *
+ * Currently, the profile system has not been implemented by Mojang yet,
+ * but we might as well add some things for it in Prism Launcher right now so
+ * we don't have to rip the code to pieces to add it later.
+ */
+struct AccountProfile {
+    QString id;
+    QString name;
+    bool legacy;
+};
+
+/**
+ * Object that stores information about a certain Mojang account.
+ *
+ * Said information may include things such as that account's username, client token, and access
+ * token if the user chose to stay logged in.
+ */
+class MinecraftAccount : public QObject, public Usable {
+    Q_OBJECT
+   public: /* construction */
+    //! Do not copy accounts. ever.
+    explicit MinecraftAccount(const MinecraftAccount& other, QObject* parent) = delete;
+
+    //! Default constructor
+    explicit MinecraftAccount(QObject* parent = 0);
+
+    static MinecraftAccountPtr createBlankMSA();
+
+    static MinecraftAccountPtr createOffline(const QString& username);
+
+    static MinecraftAccountPtr loadFromJsonV3(const QJsonObject& json);
+
+    static QUuid uuidFromUsername(QString username);
+
+    //! Saves a MinecraftAccount to a JSON object and returns it.
+    QJsonObject saveToJson() const;
+
+   public: /* manipulation */
+    shared_qobject_ptr<AuthFlow> login(bool useDeviceCode = false);
+
+    shared_qobject_ptr<AuthFlow> refresh();
+
+    shared_qobject_ptr<AuthFlow> currentTask();
+
+   public: /* queries */
+    QString internalId() const { return data.internalId; }
+
+    QString accessToken() const { return data.accessToken(); }
+
+    QString profileId() const { return data.profileId(); }
+
+    QString profileName() const { return data.profileName(); }
+
+    bool isActive() const;
+
+    AccountType accountType() const noexcept { return data.type; }
+
+    bool ownsMinecraft() const { return data.type != AccountType::Offline && data.minecraftEntitlement.ownsMinecraft; }
+
+    bool hasProfile() const { return data.profileId().size() != 0; }
+
+    QString typeString() const
+    {
+        switch (data.type) {
+            case AccountType::MSA: {
+                return "msa";
+            } break;
+            case AccountType::Offline: {
+                return "offline";
+            } break;
+            default: {
+                return "unknown";
+            }
+        }
+    }
+
+    QPixmap getFace(int width = 64, int height = 64) const;
+
+    //! Returns the current state of the account
+    AccountState accountState() const;
+
+    AccountData* accountData() { return &data; }
+
+    bool shouldRefresh() const;
+
+    void fillSession(AuthSessionPtr session);
+
+    QString lastError() const { return data.lastError(); }
+
+   signals:
+    /**
+     * This signal is emitted when the account changes
+     */
+    void changed();
+
+    void activityChanged(bool active);
+
+    // TODO: better signalling for the various possible state changes - especially errors
+
+   protected: /* variables */
+    AccountData data;
+
+    // current task we are executing here
+    shared_qobject_ptr<AuthFlow> m_currentTask;
+
+   protected: /* methods */
+    void incrementUses() override;
+    void decrementUses() override;
+
+   private slots:
+    void authSucceeded();
+    void authFailed(QString reason);
+};
+
+===== END launcher/minecraft/auth/MinecraftAccount.h =====
+
+===== BEGIN launcher/ui/pages/global/AccountListPage.cpp =====
+// SPDX-License-Identifier: GPL-3.0-only
+/*
+ *  Prism Launcher - Minecraft Launcher
+ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
+ *  Copyright (c) 2022 Jamie Mansfield <jmansfield@cadixdev.org>
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * This file incorporates work covered by the following copyright and
+ * permission notice:
+ *
+ *      Copyright 2013-2021 MultiMC Contributors
+ *
+ *      Licensed under the Apache License, Version 2.0 (the "License");
+ *      you may not use this file except in compliance with the License.
+ *      You may obtain a copy of the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *      Unless required by applicable law or agreed to in writing, software
+ *      distributed under the License is distributed on an "AS IS" BASIS,
+ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *      See the License for the specific language governing permissions and
+ *      limitations under the License.
+ */
+
+#include "AccountListPage.h"
+#include "ui/dialogs/skins/SkinManageDialog.h"
+#include "ui_AccountListPage.h"
+
+#include <QItemSelectionModel>
+#include <QMenu>
+#include <QPushButton>
+
+#include <QDebug>
+
+#include "ui/dialogs/ChooseOfflineNameDialog.h"
+#include "ui/dialogs/CustomMessageBox.h"
+#include "ui/dialogs/MSALoginDialog.h"
+
+#include "Application.h"
+
+AccountListPage::AccountListPage(QWidget* parent) : QMainWindow(parent), ui(new Ui::AccountListPage)
+{
+    ui->setupUi(this);
+    ui->listView->setEmptyString(
+        tr("Welcome!\n"
+           "If you're new here, you can select the \"Add Microsoft\" button to link your Microsoft account."));
+    ui->listView->setEmptyMode(VersionListView::String);
+    ui->listView->setContextMenuPolicy(Qt::CustomContextMenu);
+
+    m_accounts = APPLICATION->accounts();
+
+    ui->listView->setModel(m_accounts);
+    ui->listView->header()->setSectionResizeMode(AccountList::VListColumns::ProfileNameColumn, QHeaderView::Stretch);
+    ui->listView->header()->setSectionResizeMode(AccountList::VListColumns::TypeColumn, QHeaderView::ResizeToContents);
+    ui->listView->header()->setSectionResizeMode(AccountList::VListColumns::StatusColumn, QHeaderView::ResizeToContents);
+    ui->listView->setSelectionMode(QAbstractItemView::SingleSelection);
+
+    // Expand the account column
+
+    QItemSelectionModel* selectionModel = ui->listView->selectionModel();
+
+    connect(selectionModel, &QItemSelectionModel::selectionChanged,
+            [this]([[maybe_unused]] const QItemSelection& sel, [[maybe_unused]] const QItemSelection& dsel) { updateButtonStates(); });
+    connect(ui->listView, &VersionListView::customContextMenuRequested, this, &AccountListPage::ShowContextMenu);
+    connect(ui->listView, &VersionListView::activated, this,
+            [this](const QModelIndex& index) { m_accounts->setDefaultAccount(m_accounts->at(index.row())); });
+
+    connect(m_accounts, &AccountList::listChanged, this, &AccountListPage::listChanged);
+    connect(m_accounts, &AccountList::listActivityChanged, this, &AccountListPage::listChanged);
+    connect(m_accounts, &AccountList::defaultAccountChanged, this, &AccountListPage::listChanged);
+
+    updateButtonStates();
+
+    // Xbox authentication won't work without a client identifier, so disable the button if it is missing
+    if (~APPLICATION->capabilities() & Application::SupportsMSA) {
+        ui->actionAddMicrosoft->setVisible(false);
+        ui->actionAddMicrosoft->setToolTip(tr("No Microsoft Authentication client ID was set."));
+    }
+}
+
+AccountListPage::~AccountListPage()
+{
+    delete ui;
+}
+
+void AccountListPage::retranslate()
+{
+    ui->retranslateUi(this);
+}
+
+void AccountListPage::ShowContextMenu(const QPoint& pos)
+{
+    auto menu = ui->toolBar->createContextMenu(this, tr("Context menu"));
+    menu->exec(ui->listView->mapToGlobal(pos));
+    delete menu;
+}
+
+void AccountListPage::changeEvent(QEvent* event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+    }
+    QMainWindow::changeEvent(event);
+}
+
+QMenu* AccountListPage::createPopupMenu()
+{
+    QMenu* filteredMenu = QMainWindow::createPopupMenu();
+    filteredMenu->removeAction(ui->toolBar->toggleViewAction());
+    return filteredMenu;
+}
+
+void AccountListPage::listChanged()
+{
+    updateButtonStates();
+}
+
+void AccountListPage::on_actionAddMicrosoft_triggered()
+{
+    auto account = MSALoginDialog::newAccount(this);
+    if (account) {
+        m_accounts->addAccount(account);
+        if (m_accounts->count() == 1) {
+            m_accounts->setDefaultAccount(account);
+        }
+    }
+}
+
+void AccountListPage::on_actionAddOffline_triggered()
+{
+    if (!m_accounts->anyAccountIsValid()) {
+        QMessageBox::warning(this, tr("Error"),
+                             tr("You must add a Microsoft account that owns Minecraft before you can add an offline account."
+                                "<br><br>"
+                                "If you have lost your account you can contact Microsoft for support."));
+        return;
+    }
+
+    ChooseOfflineNameDialog dialog(tr("Please enter your desired username to add your offline account."), this);
+    if (dialog.exec() != QDialog::Accepted) {
+        return;
+    }
+
+    if (const MinecraftAccountPtr account = MinecraftAccount::createOffline(dialog.getUsername())) {
+        account->login()->start();  // The task will complete here.
+        m_accounts->addAccount(account);
+        if (m_accounts->count() == 1) {
+            m_accounts->setDefaultAccount(account);
+        }
+    }
+}
+
+void AccountListPage::on_actionRemove_triggered()
+{
+    auto response = CustomMessageBox::selectable(this, tr("Remove account?"), tr("Do you really want to delete this account?"),
+                                                 QMessageBox::Question, QMessageBox::Yes | QMessageBox::No, QMessageBox::No)
+                        ->exec();
+    if (response != QMessageBox::Yes) {
+        return;
+    }
+    QModelIndexList selection = ui->listView->selectionModel()->selectedIndexes();
+    if (selection.size() > 0) {
+        QModelIndex selected = selection.first();
+        m_accounts->removeAccount(selected);
+    }
+}
+
+void AccountListPage::on_actionRefresh_triggered()
+{
+    QModelIndexList selection = ui->listView->selectionModel()->selectedIndexes();
+    if (selection.size() > 0) {
+        QModelIndex selected = selection.first();
+        MinecraftAccountPtr account = selected.data(AccountList::PointerRole).value<MinecraftAccountPtr>();
+        m_accounts->requestRefresh(account->internalId());
+    }
+}
+
+void AccountListPage::on_actionSetDefault_triggered()
+{
+    QModelIndexList selection = ui->listView->selectionModel()->selectedIndexes();
+    if (selection.size() > 0) {
+        QModelIndex selected = selection.first();
+        MinecraftAccountPtr account = selected.data(AccountList::PointerRole).value<MinecraftAccountPtr>();
+        m_accounts->setDefaultAccount(account);
+    }
+}
+
+void AccountListPage::on_actionNoDefault_triggered()
+{
+    m_accounts->setDefaultAccount(nullptr);
+}
+
+void AccountListPage::updateButtonStates()
+{
+    // If there is no selection, disable buttons that require something selected.
+    QModelIndexList selection = ui->listView->selectionModel()->selectedIndexes();
+    bool hasSelection = !selection.empty();
+    bool accountIsReady = false;
+    bool accountIsOnline = false;
+    bool accountCanMoveUp = false;
+    bool accountCanMoveDown = false;
+    if (hasSelection) {
+        QModelIndex selected = selection.first();
+        MinecraftAccountPtr account = selected.data(AccountList::PointerRole).value<MinecraftAccountPtr>();
+        accountIsReady = !account->isActive();
+        accountIsOnline = account->accountType() != AccountType::Offline;
+
+        accountCanMoveUp = selected.row() > 0;
+        int indexOfLast = m_accounts->count() - 1;
+        accountCanMoveDown = selected.row() < indexOfLast;
+    }
+    ui->actionRemove->setEnabled(accountIsReady);
+    ui->actionSetDefault->setEnabled(accountIsReady);
+    ui->actionManageSkins->setEnabled(accountIsReady && accountIsOnline);
+    ui->actionRefresh->setEnabled(accountIsReady && accountIsOnline);
+
+    if (m_accounts->defaultAccount().get() == nullptr) {
+        ui->actionNoDefault->setEnabled(false);
+        ui->actionNoDefault->setChecked(true);
+    } else {
+        ui->actionNoDefault->setEnabled(true);
+        ui->actionNoDefault->setChecked(false);
+    }
+    ui->actionMoveUp->setEnabled(accountCanMoveUp);
+    ui->actionMoveDown->setEnabled(accountCanMoveDown);
+    ui->listView->resizeColumnToContents(3);
+}
+
+void AccountListPage::on_actionManageSkins_triggered()
+{
+    QModelIndexList selection = ui->listView->selectionModel()->selectedIndexes();
+    if (selection.size() > 0) {
+        QModelIndex selected = selection.first();
+        MinecraftAccountPtr account = selected.data(AccountList::PointerRole).value<MinecraftAccountPtr>();
+        SkinManageDialog dialog(this, account);
+        dialog.exec();
+    }
+}
+
+void AccountListPage::on_actionMoveUp_triggered()
+{
+    QModelIndexList selection = ui->listView->selectionModel()->selectedIndexes();
+    if (selection.size() > 0) {
+        QModelIndex selected = selection.first();
+        m_accounts->moveAccount(selected, -1);
+    }
+}
+
+void AccountListPage::on_actionMoveDown_triggered()
+{
+    QModelIndexList selection = ui->listView->selectionModel()->selectedIndexes();
+    if (selection.size() > 0) {
+        QModelIndex selected = selection.first();
+        m_accounts->moveAccount(selected, 1);
+    }
+}
+
+===== END launcher/ui/pages/global/AccountListPage.cpp =====
+
+===== BEGIN launcher/ui/pages/global/AccountListPage.h =====
+// SPDX-License-Identifier: GPL-3.0-only
+/*
+ *  Prism Launcher - Minecraft Launcher
+ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
+ *  Copyright (c) 2022 Jamie Mansfield <jmansfield@cadixdev.org>
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * This file incorporates work covered by the following copyright and
+ * permission notice:
+ *
+ *      Copyright 2013-2021 MultiMC Contributors
+ *
+ *      Licensed under the Apache License, Version 2.0 (the "License");
+ *      you may not use this file except in compliance with the License.
+ *      You may obtain a copy of the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *      Unless required by applicable law or agreed to in writing, software
+ *      distributed under the License is distributed on an "AS IS" BASIS,
+ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *      See the License for the specific language governing permissions and
+ *      limitations under the License.
+ */
+
+#pragma once
+
+#include <QMainWindow>
+#include <memory>
+
+#include "ui/pages/BasePage.h"
+
+#include "minecraft/auth/AccountList.h"
+
+namespace Ui {
+class AccountListPage;
+}
+
+class AuthenticateTask;
+
+class AccountListPage : public QMainWindow, public BasePage {
+    Q_OBJECT
+   public:
+    explicit AccountListPage(QWidget* parent = 0);
+    ~AccountListPage();
+
+    QString displayName() const override { return tr("Accounts"); }
+    QIcon icon() const override
+    {
+        auto icon = QIcon::fromTheme("accounts");
+        if (icon.isNull()) {
+            icon = QIcon::fromTheme("noaccount");
+        }
+        return icon;
+    }
+    QString id() const override { return "accounts"; }
+    QString helpPage() const override { return "getting-started/adding-an-account"; }
+    void retranslate() override;
+
+   public slots:
+    void on_actionAddMicrosoft_triggered();
+    void on_actionAddOffline_triggered();
+    void on_actionRemove_triggered();
+    void on_actionRefresh_triggered();
+    void on_actionSetDefault_triggered();
+    void on_actionNoDefault_triggered();
+    void on_actionManageSkins_triggered();
+    void on_actionMoveUp_triggered();
+    void on_actionMoveDown_triggered();
+
+    void listChanged();
+
+    //! Updates the states of the dialog's buttons.
+    void updateButtonStates();
+
+   protected slots:
+    void ShowContextMenu(const QPoint& pos);
+
+   private:
+    void changeEvent(QEvent* event) override;
+    QMenu* createPopupMenu() override;
+    AccountList* m_accounts;
+    Ui::AccountListPage* ui;
+};
+
+===== END launcher/ui/pages/global/AccountListPage.h =====
+
+===== BEGIN launcher/ui/pages/global/AccountListPage.ui =====
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AccountListPage</class>
+ <widget class="QMainWindow" name="AccountListPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="VersionListView" name="listView">
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="rootIsDecorated">
+       <bool>false</bool>
+      </property>
+      <property name="itemsExpandable">
+       <bool>false</bool>
+      </property>
+      <property name="allColumnsShowFocus">
+       <bool>true</bool>
+      </property>
+      <attribute name="headerStretchLastSection">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="WideBar" name="toolBar">
+   <attribute name="toolBarArea">
+    <enum>RightToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAddMicrosoft"/>
+   <addaction name="actionAddOffline"/>
+   <addaction name="actionRefresh"/>
+   <addaction name="actionRemove"/>
+   <addaction name="actionSetDefault"/>
+   <addaction name="actionNoDefault"/>
+   <addaction name="actionMoveUp"/>
+   <addaction name="actionMoveDown"/>
+   <addaction name="separator"/>
+   <addaction name="actionManageSkins"/>
+  </widget>
+  <action name="actionSetDefault">
+   <property name="text">
+    <string>&amp;Set Default</string>
+   </property>
+  </action>
+  <action name="actionNoDefault">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;No Default</string>
+   </property>
+  </action>
+  <action name="actionManageSkins">
+   <property name="text">
+    <string>&amp;Manage Skins</string>
+   </property>
+   <property name="toolTip">
+    <string>Manage Skins</string>
+   </property>
+  </action>
+  <action name="actionAddMicrosoft">
+   <property name="text">
+    <string>&amp;Add Microsoft</string>
+   </property>
+  </action>
+  <action name="actionAddOffline">
+   <property name="text">
+    <string>Add &amp;Offline</string>
+   </property>
+  </action>
+  <action name="actionRefresh">
+   <property name="text">
+    <string>&amp;Refresh</string>
+   </property>
+   <property name="toolTip">
+    <string>Refresh the account tokens</string>
+   </property>
+  </action>
+  <action name="actionRemove">
+   <property name="text">
+    <string>Remo&amp;ve</string>
+   </property>
+  </action>
+  <action name="actionMoveUp">
+   <property name="text">
+    <string>Move &amp;Up</string>
+   </property>
+  </action>
+  <action name="actionMoveDown">
+   <property name="text">
+    <string>Move &amp;Down</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>VersionListView</class>
+   <extends>QTreeView</extends>
+   <header>ui/widgets/VersionListView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>WideBar</class>
+   <extends>QToolBar</extends>
+   <header>ui/widgets/WideBar.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
+
+===== END launcher/ui/pages/global/AccountListPage.ui =====
+
+===== BEGIN scripts/cherry_pick_remote_commit.sh =====
+
+===== END scripts/cherry_pick_remote_commit.sh =====
+
