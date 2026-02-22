@@ -1,46 +1,46 @@
 #pragma once
 
-#include <QImage>
-#include <QList>
-#include <QObject>
-#include <QSet>
+#include <QString>
+#include <memory>
 
-#include "minecraft/auth/AccountData.h"
-#include "minecraft/auth/AuthStep.h"
-#include "tasks/Task.h"
+class MinecraftAccount;
 
-class AuthFlow : public Task {
-    Q_OBJECT
+struct AuthSession {
+    bool MakeOffline(QString offline_playername);
+    void MakeDemo(QString name, QString uuid);
 
-   public:
-    enum class Action { Refresh, Login, DeviceCode };
+    QString serializeUserProperties();
 
-    explicit AuthFlow(AccountData* data, Action action = Action::Refresh);
-    virtual ~AuthFlow() = default;
+    enum Status {
+        Undetermined,
+        RequiresOAuth,
+        RequiresPassword,
+        RequiresProfileSetup,
+        PlayableOffline,
+        PlayableOnline,
+        GoneOrMigrated
+    } status = Undetermined;
 
-    void executeTask() override;
+    // combined session ID
+    QString session;
+    // volatile auth token
+    QString access_token;
+    // profile name
+    QString player_name;
+    // profile ID
+    QString uuid;
+    // 'legacy' or 'mojang', depending on account type
+    QString user_type;
+    // Did the auth server reply?
+    bool auth_server_online = false;
+    // Did the user request online mode?
+    bool wants_online = true;
 
-    AccountTaskState taskState() { return m_taskState; }
+    // Is this a demo session?
+    bool demo = false;
 
-   public slots:
-    bool abort() override;
-
-   signals:
-    void authorizeWithBrowser(const QUrl& url);
-    void authorizeWithBrowserWithExtra(QString url, QString code, int expiresIn);
-
-   protected:
-    void succeed();
-    void nextStep();
-
-   private slots:
-    // NOTE: true -> non-terminal state, false -> terminal state
-    bool changeState(AccountTaskState newState, QString reason = QString());
-    void stepFinished(AccountTaskState resultingState, QString message);
-
-   private:
-    AccountTaskState m_taskState = AccountTaskState::STATE_CREATED;
-    QList<AuthStep::Ptr> m_steps;
-    AuthStep::Ptr m_currentStep;
-    AccountData* m_data = nullptr;
+    // Does authentication confirm ownership of Minecraft?
+    bool ownMinecraft = true;
 };
+
+using AuthSessionPtr = std::shared_ptr<AuthSession>;
