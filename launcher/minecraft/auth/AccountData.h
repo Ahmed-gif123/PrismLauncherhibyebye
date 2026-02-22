@@ -115,6 +115,9 @@ struct AccountData {
     MinecraftEntitlement minecraftEntitlement;
     Validity validity_ = Validity::None;
 
+    // runtime ownership cache derived from authentication steps
+    bool ownMinecraft = false;
+
     // runtime only information (not saved with the account)
     QString internalId;
     QString errorString;
