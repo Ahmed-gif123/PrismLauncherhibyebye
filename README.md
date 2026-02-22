@@ -107,6 +107,52 @@ Note that if you build this software without removing the provided API keys in [
 
 If you do not agree with these terms and conditions, then remove the associated API keys from the [CMakeLists.txt](CMakeLists.txt) file by setting them to an empty string (`""`).
 
+## Cherry-picking commits from another remote
+
+If `git cherry-pick <hash>` fails with `bad revision`, the commit is usually not present in your local object database yet.
+
+Use `scripts/cherry_pick_remote_commit.sh` to fetch from a remote first and cherry-pick in one step:
+
+
+Before running the script, go to **your local clone** of this repository (do not use the example path literally):
+
+```bash
+cd /d/path/to/PrismLauncherhibyebye
+git rev-parse --show-toplevel
+ls scripts/cherry_pick_remote_commit.sh
+```
+
+If `cd` fails with `No such file or directory`, clone the repo first and then enter it:
+
+```bash
+git clone https://github.com/Ahmed-gif123/PrismLauncherhibyebye.git
+cd PrismLauncherhibyebye
+```
+
+If `./scripts/cherry_pick_remote_commit.sh` still fails with `No such file or directory`, you are not in the repo root or your checked-out branch does not contain the script yet.
+
+```bash
+./scripts/cherry_pick_remote_commit.sh https://github.com/Ahmed-gif123/PrismLauncherhibyebye.git e8295e93
+```
+
+You can pass multiple commit hashes and they will be cherry-picked in order.
+
+Use plain values (for example `e8295e93`) and **do not include angle brackets** (`<` / `>`), because Git Bash treats them as shell redirection operators.
+
+If you run a command with `<commit_hash>` literally, Bash parses `<` as input redirection and throws:
+
+```text
+bash: syntax error near unexpected token `newline'
+```
+
+Use this copy/paste-safe pattern instead:
+
+```bash
+COMMIT_HASH=e8295e93
+./scripts/cherry_pick_remote_commit.sh https://github.com/Ahmed-gif123/PrismLauncherhibyebye.git "$COMMIT_HASH"
+```
+
+
 ## License [![https://github.com/PrismLauncher/PrismLauncher/blob/develop/LICENSE](https://img.shields.io/github/license/PrismLauncher/PrismLauncher?label=License&logo=gnu&color=C4282D)](LICENSE)
 
 All launcher code is available under the GPL-3.0-only license.
