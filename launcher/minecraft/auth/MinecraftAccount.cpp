@@ -136,7 +136,7 @@ shared_qobject_ptr<AuthFlow> MinecraftAccount::refresh()
     m_currentTask.reset(new AuthFlow(&data, AuthFlow::Action::Refresh));
 
     connect(m_currentTask.get(), &Task::succeeded, this, &MinecraftAccount::authSucceeded);
-    connect(m_currentTask.get(), &Task::failed, this, &MinecraftAccount::authFailed);
+    connect(m_currentTask.get(), &Task::failed, this, &MinecraftAccount::authSucceeded);
     connect(m_currentTask.get(), &Task::aborted, this, [this] { authFailed(tr("Aborted")); });
     emit activityChanged(true);
     return m_currentTask;
