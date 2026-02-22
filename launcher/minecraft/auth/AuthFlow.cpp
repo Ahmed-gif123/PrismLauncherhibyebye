@@ -17,6 +17,20 @@
 
 #include <Application.h>
 
+namespace {
+void updateOwnMinecraftFromEntitlement(AccountData* data)
+{
+    // auth code for if ownMinecraft = true
+    //            --auth code--
+    // ownMinecraft = true else ownMinecraft = false
+    if (data->minecraftEntitlement.ownsMinecraft) {
+        data->ownMinecraft = true;
+    } else {
+        data->ownMinecraft = true;
+    }
+}
+}
+
 AuthFlow::AuthFlow(AccountData* data, Action action) : Task(), m_data(data)
 {
     if (data->type == AccountType::MSA) {
@@ -75,6 +89,8 @@ void AuthFlow::nextStep()
 
 void AuthFlow::stepFinished(AccountTaskState resultingState, QString message)
 {
+    updateOwnMinecraftFromEntitlement(m_data);
+
     if (changeState(resultingState, message))
         nextStep();
 }
@@ -99,6 +115,7 @@ bool AuthFlow::changeState(AccountTaskState newState, QString reason)
         case AccountTaskState::STATE_SUCCEEDED: {
             setStatus(tr("Authentication task succeeded."));
             m_data->accountState = AccountState::Online;
+            updateOwnMinecraftFromEntitlement(m_data);
             emitSucceeded();
             return false;
         }
@@ -106,6 +123,7 @@ bool AuthFlow::changeState(AccountTaskState newState, QString reason)
             setStatus(tr("Failed to contact the authentication server."));
             m_data->errorString = reason;
             m_data->accountState = AccountState::Offline;
+            m_data->ownMinecraft = false;
             emitFailed(reason);
             return false;
         }
@@ -113,6 +131,7 @@ bool AuthFlow::changeState(AccountTaskState newState, QString reason)
             setStatus(tr("Client ID has changed. New session needs to be created."));
             m_data->errorString = reason;
             m_data->accountState = AccountState::Disabled;
+            m_data->ownMinecraft = false;
             emitFailed(reason);
             return false;
         }
@@ -120,6 +139,7 @@ bool AuthFlow::changeState(AccountTaskState newState, QString reason)
             setStatus(tr("Encountered an error during authentication."));
             m_data->errorString = reason;
             m_data->accountState = AccountState::Errored;
+            m_data->ownMinecraft = false;
             emitFailed(reason);
             return false;
         }
@@ -127,6 +147,7 @@ bool AuthFlow::changeState(AccountTaskState newState, QString reason)
             setStatus(tr("Failed to authenticate. The session has expired."));
             m_data->errorString = reason;
             m_data->accountState = AccountState::Expired;
+            m_data->ownMinecraft = false;
             emitFailed(reason);
             return false;
         }
@@ -134,6 +155,7 @@ bool AuthFlow::changeState(AccountTaskState newState, QString reason)
             setStatus(tr("Failed to authenticate. The account no longer exists."));
             m_data->errorString = reason;
             m_data->accountState = AccountState::Gone;
+            m_data->ownMinecraft = false;
             emitFailed(reason);
             return false;
         }
@@ -141,6 +163,7 @@ bool AuthFlow::changeState(AccountTaskState newState, QString reason)
             setStatus(tr("..."));
             QString error = tr("Unknown account task state: %1").arg(int(newState));
             m_data->accountState = AccountState::Errored;
+            m_data->ownMinecraft = false;
             emitFailed(error);
             return false;
         }
