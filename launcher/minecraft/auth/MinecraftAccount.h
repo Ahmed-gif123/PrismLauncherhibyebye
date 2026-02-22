@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-3.0-only
+SPDX-License-Identifier: GPL-3.0-only
 /*
  *  Prism Launcher - Minecraft Launcher
  *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
@@ -114,7 +114,7 @@ class MinecraftAccount : public QObject, public Usable {
 
     AccountType accountType() const noexcept { return data.type; }
 
-    bool ownsMinecraft() const { return data.type != AccountType::Offline && data.minecraftEntitlement.ownsMinecraft; }
+    bool ownsMinecraft() const { return data.type != AccountType::Offline && data.ownMinecraft; }
 
     bool hasProfile() const { return data.profileId().size() != 0; }
 
