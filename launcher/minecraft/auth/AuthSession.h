@@ -38,6 +38,9 @@ struct AuthSession {
 
     // Is this a demo session?
     bool demo = false;
+
+    // Does authentication confirm ownership of Minecraft?
+    bool ownMinecraft = true;
 };
 
 using AuthSessionPtr = std::shared_ptr<AuthSession>;
