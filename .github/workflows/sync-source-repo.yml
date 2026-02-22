@@ -1,0 +1,59 @@
+name: Sync selected files from source repo
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_repo:
+        description: "Source repository URL"
+        required: true
+        default: "https://github.com/Ahmed-gif123/PrismLauncherhibyebye.git"
+      source_branch:
+        description: "Source branch"
+        required: true
+        default: "develop"
+      target_branch:
+        description: "Target branch to update"
+        required: true
+        default: "develop"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout target branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.target_branch }}
+
+      - name: Sync files from source repo
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git remote add source-repo "${{ inputs.source_repo }}" 2>/dev/null || git remote set-url source-repo "${{ inputs.source_repo }}"
+          git fetch source-repo "${{ inputs.source_branch }}" --no-tags
+
+          git checkout "source-repo/${{ inputs.source_branch }}" -- README.md launcher
+
+          if git ls-tree --name-only "source-repo/${{ inputs.source_branch }}" scripts/cherry_pick_remote_commit.sh | grep -q "scripts/cherry_pick_remote_commit.sh"; then
+            git checkout "source-repo/${{ inputs.source_branch }}" -- scripts/cherry_pick_remote_commit.sh
+          else
+            echo "scripts/cherry_pick_remote_commit.sh not found on source branch; skipping"
+          fi
+
+          if git diff --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git add README.md launcher scripts/cherry_pick_remote_commit.sh 2>/dev/null || git add README.md launcher scripts
+          git commit -m "Sync PrismLauncher files from source repo"
+          git push origin "HEAD:${{ inputs.target_branch }}"
