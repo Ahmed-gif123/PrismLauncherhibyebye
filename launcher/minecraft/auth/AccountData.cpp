@@ -1,3 +1,4 @@
+===== BEGIN launcher/minecraft/auth/AccountData.cpp =====
 // SPDX-License-Identifier: GPL-3.0-only
 /*
  *  Prism Launcher - Minecraft Launcher
@@ -320,8 +321,9 @@ bool AccountData::resumeStateFromV3(QJsonObject data)
         }
     }
 
-    validity_ = minecraftProfile.validity;
-    return true;
+     minecraftEntitlement.canPlayMinecraft = true;
+     minecraftEntitlement.ownsMinecraft = true;
+     minecraftEntitlement.validity = Validity::Assumed;
 }
 
 QJsonObject AccountData::saveState() const
